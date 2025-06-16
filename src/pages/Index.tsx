@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { MessageCircle, Phone, CheckCircle, AlertCircle, Globe } from 'lucide-react';
+import { Phone, CheckCircle, AlertCircle, Globe } from 'lucide-react';
 
 import { useToast } from '@/hooks/use-toast';
 
@@ -84,9 +84,10 @@ const Index = () => {
         <div className="text-center space-y-4">
           <div className="flex justify-center">
             <div className="relative">
-              <MessageCircle 
-                size={64} 
-                className="text-whatsapp-green" 
+              <img 
+                src="/logo.png" 
+                alt="WhatsApp Direct Message Logo" 
+                className="w-24 h-24 object-contain"
               />
             </div>
           </div>
@@ -184,7 +185,6 @@ const Index = () => {
               disabled={!phoneNumber || !isValidNumber}
               className="w-full whatsapp-gradient hover:shadow-lg hover:shadow-whatsapp-green/25 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-lg h-14 transition-all duration-300 transform hover:scale-105"
             >
-              <MessageCircle className="mr-2" size={24} />
               Abrir no WhatsApp
             </Button>
           </CardContent>
