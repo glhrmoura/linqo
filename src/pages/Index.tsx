@@ -37,6 +37,10 @@ const Index = () => {
   const [isValidNumber, setIsValidNumber] = useState(false);
   const { toast } = useToast();
 
+  const isMobileDevice = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  };
+
   const validatePhoneNumber = (number: string) => {
     const cleaned = number.replace(/\D/g, '');
     const isValid = cleaned.length >= 8 && cleaned.length <= 15;
@@ -68,7 +72,14 @@ const Index = () => {
 
     const formattedNumber = formatPhoneNumber(countryCode, phoneNumber);
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${formattedNumber}${message ? `?text=${encodedMessage}` : ''}`;
+    
+    let whatsappUrl;
+    
+    if (isMobileDevice()) {
+      whatsappUrl = `whatsapp://send?phone=${formattedNumber}${message ? `&text=${encodedMessage}` : ''}`;
+    } else {
+      whatsappUrl = `https://wa.me/${formattedNumber}${message ? `?text=${encodedMessage}` : ''}`;
+    }
     
     console.log('Opening WhatsApp with URL:', whatsappUrl);
     console.log('Country Code:', countryCode, 'Phone Number:', phoneNumber, 'Formatted:', formattedNumber);
