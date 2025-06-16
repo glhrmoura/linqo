@@ -1,0 +1,38 @@
+{
+  "title": "WhatsApp Direct Message",
+  "subtitle": "Inicia conversaciones en WhatsApp sin agregar contactos",
+  "card": {
+    "title": "Ingresa el número",
+    "description": "Elige el país e ingresa el número de teléfono"
+  },
+  "form": {
+    "countryCode": {
+      "label": "Código de país"
+    },
+    "phoneNumber": {
+      "label": "Número de teléfono",
+      "placeholder": "Ej: 11 99999-9999",
+      "helper": "Ingresa solo los números sin el código de país",
+      "error": "El número debe tener entre 8 y 15 dígitos"
+    },
+    "message": {
+      "label": "Mensaje inicial (opcional)",
+      "placeholder": "Escribe un mensaje para iniciar la conversación..."
+    },
+    "submit": "Abrir en WhatsApp"
+  },
+  "footer": {
+    "compatibility": "Funciona en escritorio y móvil",
+    "privacy": "Tus datos no se almacenan ni se comparten"
+  },
+  "toast": {
+    "invalidNumber": {
+      "title": "Número inválido",
+      "description": "Por favor, ingresa un número de teléfono válido."
+    },
+    "success": {
+      "title": "¡WhatsApp abierto!",
+      "description": "La conversación se ha iniciado en una nueva pestaña."
+    }
+  }
+} 
