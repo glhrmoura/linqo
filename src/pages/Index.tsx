@@ -91,7 +91,7 @@ const Index = () => {
             </div>
           </div>
           <h1 className="text-4xl font-bold text-dark-text">
-            WhatsApp - Fast Direct
+            WhatsApp <br /> Direct Message
           </h1>
           <p className="text-dark-text-secondary text-lg">
             Inicie conversas no WhatsApp sem adicionar aos contatos
