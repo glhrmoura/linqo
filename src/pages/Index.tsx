@@ -94,7 +94,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-dark-bg flex flex-col">
       <Header className="fixed top-0 left-0 right-0 z-50 bg-dark-bg" />
-      <main className="flex-1 flex items-center justify-center p-4 pt-24">
+      <main className="flex-1 flex items-center justify-center p-4 pb-24 pt-24">
         <div className="w-full max-w-md space-y-8 animate-fade-in">
           <div className="text-center space-y-4">
             <h1 className="text-4xl font-bold text-dark-text">
