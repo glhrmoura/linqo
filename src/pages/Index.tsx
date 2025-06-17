@@ -93,8 +93,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-dark-bg flex flex-col">
-      <Header />
-      <main className="flex-1 flex items-center justify-center p-4">
+      <Header className="fixed top-0 left-0 right-0 z-50 bg-dark-bg" />
+      <main className="flex-1 flex items-center justify-center p-4 pt-24">
         <div className="w-full max-w-md space-y-8 animate-fade-in">
           <div className="text-center space-y-4">
             <h1 className="text-4xl font-bold text-dark-text">
@@ -195,6 +195,10 @@ const Index = () => {
               </Button>
             </CardContent>
           </Card>
+        </div>
+      </main>
+      <footer className="w-full bg-dark-bg-secondary border-t border-dark-bg-tertiary py-6">
+        <div className="mx-auto max-w-[1200px] px-4">
           <div className="text-center space-y-2">
             <p className="text-dark-text-secondary text-sm">
               {t('footer.compatibility')}
@@ -204,7 +208,7 @@ const Index = () => {
             </p>
           </div>
         </div>
-      </main>
+      </footer>
     </div>
   );
 };
