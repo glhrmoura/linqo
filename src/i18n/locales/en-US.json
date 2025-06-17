@@ -34,5 +34,28 @@
       "title": "WhatsApp opened!",
       "description": "The conversation has been started in a new tab."
     }
+  },
+  "languages": {
+    "pt-BR": "Português",
+    "en-US": "English",
+    "es-ES": "Español"
+  },
+  "countries": {
+    "BR": "Brazil",
+    "US": "United States",
+    "ES": "Spain",
+    "PT": "Portugal",
+    "GB": "United Kingdom",
+    "FR": "France",
+    "DE": "Germany",
+    "IT": "Italy",
+    "MX": "Mexico",
+    "AR": "Argentina",
+    "CL": "Chile",
+    "CO": "Colombia",
+    "PE": "Peru",
+    "CN": "China",
+    "JP": "Japan",
+    "IN": "India"
   }
 } 

@@ -11,22 +11,22 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Header } from '@/components/ui/header';
 
 const countryCodes = [
-  { code: '+55', country: 'Brasil', flag: '🇧🇷' },
-  { code: '+1', country: 'Estados Unidos', flag: '🇺🇸' },
-  { code: '+34', country: 'Espanha', flag: '🇪🇸' },
-  { code: '+351', country: 'Portugal', flag: '🇵🇹' },
-  { code: '+44', country: 'Reino Unido', flag: '🇬🇧' },
-  { code: '+33', country: 'França', flag: '🇫🇷' },
-  { code: '+49', country: 'Alemanha', flag: '🇩🇪' },
-  { code: '+39', country: 'Itália', flag: '🇮🇹' },
-  { code: '+52', country: 'México', flag: '🇲🇽' },
-  { code: '+54', country: 'Argentina', flag: '🇦🇷' },
-  { code: '+56', country: 'Chile', flag: '🇨🇱' },
-  { code: '+57', country: 'Colômbia', flag: '🇨🇴' },
-  { code: '+51', country: 'Peru', flag: '🇵🇪' },
-  { code: '+86', country: 'China', flag: '🇨🇳' },
-  { code: '+81', country: 'Japão', flag: '🇯🇵' },
-  { code: '+91', country: 'Índia', flag: '🇮🇳' },
+  { code: '+55', countryCode: 'BR', flag: '🇧🇷' },
+  { code: '+1', countryCode: 'US', flag: '🇺🇸' },
+  { code: '+34', countryCode: 'ES', flag: '🇪🇸' },
+  { code: '+351', countryCode: 'PT', flag: '🇵🇹' },
+  { code: '+44', countryCode: 'GB', flag: '🇬🇧' },
+  { code: '+33', countryCode: 'FR', flag: '🇫🇷' },
+  { code: '+49', countryCode: 'DE', flag: '🇩🇪' },
+  { code: '+39', countryCode: 'IT', flag: '🇮🇹' },
+  { code: '+52', countryCode: 'MX', flag: '🇲🇽' },
+  { code: '+54', countryCode: 'AR', flag: '🇦🇷' },
+  { code: '+56', countryCode: 'CL', flag: '🇨🇱' },
+  { code: '+57', countryCode: 'CO', flag: '🇨🇴' },
+  { code: '+51', countryCode: 'PE', flag: '🇵🇪' },
+  { code: '+86', countryCode: 'CN', flag: '🇨🇳' },
+  { code: '+81', countryCode: 'JP', flag: '🇯🇵' },
+  { code: '+91', countryCode: 'IN', flag: '🇮🇳' },
 ];
 
 const Index = () => {
@@ -135,7 +135,7 @@ const Index = () => {
                         <div className="flex items-center gap-3">
                           <span className="text-lg">{country.flag}</span>
                           <span className="font-medium">{country.code}</span>
-                          <span className="text-dark-text-secondary">{country.country}</span>
+                          <span className="text-dark-text-secondary">{t(`countries.${country.countryCode}`)}</span>
                         </div>
                       </SelectItem>
                     ))}

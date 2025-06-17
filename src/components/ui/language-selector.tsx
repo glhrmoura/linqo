@@ -3,13 +3,13 @@ import { Globe } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const languages = [
-  { code: 'pt-BR', name: 'Português', flag: '🇧🇷' },
-  { code: 'en-US', name: 'English', flag: '🇺🇸' },
-  { code: 'es-ES', name: 'Español', flag: '🇪🇸' },
+  { code: 'pt-BR', flag: '🇧🇷' },
+  { code: 'en-US', flag: '🇺🇸' },
+  { code: 'es-ES', flag: '🇪🇸' },
 ];
 
 export function LanguageSelector() {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   const handleLanguageChange = (value: string) => {
     i18n.changeLanguage(value);
@@ -17,9 +17,8 @@ export function LanguageSelector() {
 
   return (
     <Select value={i18n.language} onValueChange={handleLanguageChange}>
-      <SelectTrigger className="w-[140px] bg-dark-bg-tertiary border-dark-bg-quaternary text-dark-text focus:border-whatsapp-green focus:ring-whatsapp-green/20 h-10">
+      <SelectTrigger className="w-auto gap-2 bg-dark-bg-tertiary border-dark-bg-quaternary text-dark-text focus:border-whatsapp-green focus:ring-whatsapp-green/20 h-10">
         <div className="flex items-center gap-2">
-          <Globe size={16} className="text-dark-text-secondary" />
           <SelectValue />
         </div>
       </SelectTrigger>
@@ -32,7 +31,7 @@ export function LanguageSelector() {
           >
             <div className="flex items-center gap-2">
               <span className="text-lg">{lang.flag}</span>
-              <span>{lang.name}</span>
+              <span>{t(`languages.${lang.code}`)}</span>
             </div>
           </SelectItem>
         ))}

@@ -34,5 +34,28 @@
       "title": "WhatsApp aberto!",
       "description": "A conversa foi iniciada em uma nova aba."
     }
+  },
+  "languages": {
+    "pt-BR": "Português",
+    "en-US": "English",
+    "es-ES": "Español"
+  },
+  "countries": {
+    "BR": "Brasil",
+    "US": "Estados Unidos",
+    "ES": "Espanha",
+    "PT": "Portugal",
+    "GB": "Reino Unido",
+    "FR": "França",
+    "DE": "Alemanha",
+    "IT": "Itália",
+    "MX": "México",
+    "AR": "Argentina",
+    "CL": "Chile",
+    "CO": "Colômbia",
+    "PE": "Peru",
+    "CN": "China",
+    "JP": "Japão",
+    "IN": "Índia"
   }
 } 
