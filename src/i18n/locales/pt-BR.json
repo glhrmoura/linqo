@@ -15,10 +15,6 @@
       "helper": "Digite apenas os números sem o código do país",
       "error": "Número deve ter entre 8 e 15 dígitos"
     },
-    "message": {
-      "label": "Mensagem inicial (opcional)",
-      "placeholder": "Digite uma mensagem para iniciar a conversa..."
-    },
     "submit": "Abrir no WhatsApp"
   },
   "footer": {

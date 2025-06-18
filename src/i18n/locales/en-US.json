@@ -15,10 +15,6 @@
       "helper": "Enter only the numbers without the country code",
       "error": "Number must be between 8 and 15 digits"
     },
-    "message": {
-      "label": "Initial message (optional)",
-      "placeholder": "Type a message to start the conversation..."
-    },
     "submit": "Open in WhatsApp"
   },
   "footer": {

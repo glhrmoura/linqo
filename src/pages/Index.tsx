@@ -33,7 +33,6 @@ const Index = () => {
   const { t } = useTranslation();
   const [countryCode, setCountryCode] = useState('+55');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [message, setMessage] = useState('');
   const [isValidNumber, setIsValidNumber] = useState(false);
   const { toast } = useToast();
 
@@ -71,14 +70,13 @@ const Index = () => {
     }
 
     const formattedNumber = formatPhoneNumber(countryCode, phoneNumber);
-    const encodedMessage = encodeURIComponent(message);
     
     let whatsappUrl;
     
     if (isMobileDevice()) {
-      whatsappUrl = `whatsapp://send?phone=${formattedNumber}${message ? `&text=${encodedMessage}` : ''}`;
+      whatsappUrl = `whatsapp://send?phone=${formattedNumber}`;
     } else {
-      whatsappUrl = `https://wa.me/${formattedNumber}${message ? `?text=${encodedMessage}` : ''}`;
+      whatsappUrl = `https://wa.me/${formattedNumber}`;
     }
     
     console.log('Opening WhatsApp with URL:', whatsappUrl);
@@ -97,23 +95,15 @@ const Index = () => {
       <main className="flex-1 flex items-center justify-center p-4 pb-24 pt-24">
         <div className="w-full max-w-md space-y-8 animate-fade-in">
           <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold text-dark-text">
+            <h1 className="text-2xl md:text-4xl font-bold text-dark-text">
               {t('title')}
             </h1>
-            <p className="text-dark-text-secondary text-lg">
+            <p className="text-dark-text-secondary text-sm md:text-lg">
               {t('subtitle')}
             </p>
           </div>
           <Card className="bg-dark-bg-secondary border-dark-bg-tertiary shadow-2xl">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl text-dark-text">
-                {t('card.title')}
-              </CardTitle>
-              <CardDescription className="text-dark-text-secondary">
-                {t('card.description')}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 pt-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-dark-text-secondary">
                   {t('form.countryCode.label')}
@@ -174,22 +164,19 @@ const Index = () => {
                   {t('form.phoneNumber.helper')}
                 </p>
               </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-dark-text-secondary">
-                  {t('form.message.label')}
-                </label>
-                <textarea
-                  placeholder={t('form.message.placeholder')}
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  className="w-full p-3 bg-dark-bg-tertiary border border-dark-bg-quaternary rounded-lg text-dark-text placeholder:text-dark-text-secondary focus:border-whatsapp-green focus:ring-2 focus:ring-whatsapp-green/20 resize-none"
-                  rows={3}
-                />
+              <div className="md:hidden fixed bottom-0 left-0 right-0 bg-dark-bg-secondary border-t border-dark-bg-tertiary p-4">
+                <Button
+                  onClick={openWhatsApp}
+                  disabled={!phoneNumber || !isValidNumber}
+                  className="w-full whatsapp-gradient hover:shadow-lg hover:shadow-whatsapp-green/25 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-lg h-14 transition-all duration-300 transform hover:scale-105"
+                >
+                  {t('form.submit')}
+                </Button>
               </div>
               <Button
                 onClick={openWhatsApp}
                 disabled={!phoneNumber || !isValidNumber}
-                className="w-full whatsapp-gradient hover:shadow-lg hover:shadow-whatsapp-green/25 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-lg h-14 transition-all duration-300 transform hover:scale-105"
+                className="hidden md:block w-full whatsapp-gradient hover:shadow-lg hover:shadow-whatsapp-green/25 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-lg h-14 transition-all duration-300 transform hover:scale-105"
               >
                 {t('form.submit')}
               </Button>
@@ -197,7 +184,7 @@ const Index = () => {
           </Card>
         </div>
       </main>
-      <footer className="w-full bg-dark-bg-secondary border-t border-dark-bg-tertiary py-6">
+      <footer className="w-full bg-dark-bg-secondary border-t border-dark-bg-tertiary py-6 mb-[89px] md:mb-0">
         <div className="mx-auto max-w-[1200px] px-4">
           <div className="text-center space-y-2">
             <p className="text-dark-text-secondary text-sm">
