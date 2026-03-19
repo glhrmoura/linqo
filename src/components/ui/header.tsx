@@ -7,7 +7,7 @@ export function Header({ className, ...props }: React.HTMLAttributes<HTMLElement
       <div className="mx-auto max-w-[1200px] px-4 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <img 
-            src="/logo.png" 
+            src="/assets/logo.png" 
             alt="WhatsApp Direct Message Logo" 
             className="w-8 h-8 object-contain"
           />
