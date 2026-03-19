@@ -6,7 +6,7 @@ import { useToast } from '@/hooks/use-toast';
 
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Header } from '@/components/ui/header';
 
@@ -92,16 +92,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-dark-bg flex flex-col">
       <Header className="fixed top-0 left-0 right-0 z-50 bg-dark-bg" />
-      <main className="flex-1 flex items-center justify-center p-4 pb-24 pt-24">
-        <div className="w-full max-w-md space-y-8 animate-fade-in">
-          <div className="text-center space-y-4">
-            <h1 className="text-2xl md:text-4xl font-bold text-dark-text">
-              {t('title')}
-            </h1>
-            <p className="text-dark-text-secondary text-sm md:text-lg">
-              {t('subtitle')}
-            </p>
-          </div>
+      <main className="flex-1 flex items-start justify-center p-4 pt-24">
+        <div className="w-full max-w-md animate-fade-in">
           <Card className="bg-dark-bg-secondary border-dark-bg-tertiary shadow-2xl">
             <CardContent className="space-y-6 pt-6">
               <div className="space-y-2">
@@ -164,19 +156,10 @@ const Index = () => {
                   {t('form.phoneNumber.helper')}
                 </p>
               </div>
-              <div className="md:hidden fixed bottom-0 left-0 right-0 bg-dark-bg-secondary border-t border-dark-bg-tertiary p-4">
-                <Button
-                  onClick={openWhatsApp}
-                  disabled={!phoneNumber || !isValidNumber}
-                  className="w-full whatsapp-gradient hover:shadow-lg hover:shadow-whatsapp-green/25 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-lg h-14 transition-all duration-300 transform hover:scale-105"
-                >
-                  {t('form.submit')}
-                </Button>
-              </div>
               <Button
                 onClick={openWhatsApp}
                 disabled={!phoneNumber || !isValidNumber}
-                className="hidden md:block w-full whatsapp-gradient hover:shadow-lg hover:shadow-whatsapp-green/25 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-lg h-14 transition-all duration-300 transform hover:scale-105"
+                className="w-full whatsapp-gradient hover:shadow-lg hover:shadow-whatsapp-green/25 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-lg h-14 transition-all duration-300 transform hover:scale-105"
               >
                 {t('form.submit')}
               </Button>
@@ -184,18 +167,6 @@ const Index = () => {
           </Card>
         </div>
       </main>
-      <footer className="w-full bg-dark-bg-secondary border-t border-dark-bg-tertiary py-6 mb-[89px] md:mb-0">
-        <div className="mx-auto max-w-[1200px] px-4">
-          <div className="text-center space-y-2">
-            <p className="text-dark-text-secondary text-sm">
-              {t('footer.compatibility')}
-            </p>
-            <p className="text-dark-text-secondary text-xs">
-              {t('footer.privacy')}
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
