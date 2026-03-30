@@ -53,6 +53,21 @@ const Index = () => {
     validatePhoneNumber(value);
   };
 
+  const handlePastePhone = async () => {
+    try {
+      const clipboardText = await navigator.clipboard.readText();
+      const value = clipboardText.trim();
+      setPhoneNumber(value);
+      validatePhoneNumber(value);
+    } catch {
+      toast({
+        title: 'Nao foi possivel colar',
+        description: 'Permita acesso a area de transferencia no navegador.',
+        variant: 'destructive',
+      });
+    }
+  };
+
   const formatPhoneNumber = (countryCode: string, number: string) => {
     const cleaned = number.replace(/\D/g, '');
     const countryCodeDigits = countryCode.replace('+', '');
@@ -135,10 +150,18 @@ const Index = () => {
                     placeholder={t('form.phoneNumber.placeholder')}
                     value={phoneNumber}
                     onChange={handlePhoneChange}
-                    className="pl-12 pr-12 bg-dark-bg-tertiary border-dark-bg-quaternary text-dark-text placeholder:text-dark-text-secondary focus:border-whatsapp-green focus:ring-whatsapp-green/20 text-lg h-14"
+                    className="pl-12 pr-28 bg-dark-bg-tertiary border-dark-bg-quaternary text-dark-text placeholder:text-dark-text-secondary focus:border-whatsapp-green focus:ring-whatsapp-green/20 text-lg h-14"
                   />
+                  <Button
+                    type="button"
+                    onClick={handlePastePhone}
+                    variant="ghost"
+                    className="absolute right-2 top-1/2 h-8 -translate-y-1/2 rounded-md border border-dark-bg-quaternary bg-dark-bg-tertiary px-2 text-xs text-dark-text-secondary transition-all duration-200 hover:border-whatsapp-green/40 hover:bg-dark-bg-quaternary hover:text-dark-text"
+                  >
+                    Colar
+                  </Button>
                   {phoneNumber && (
-                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                    <div className="absolute right-16 top-1/2 transform -translate-y-1/2">
                       {isValidNumber ? (
                         <CheckCircle className="text-whatsapp-green" size={20} />
                       ) : (
