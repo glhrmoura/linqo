@@ -1,6 +1,6 @@
 {
-  "title": "WhatsApp Direct Message",
-  "subtitle": "Inicia conversaciones en WhatsApp sin agregar contactos",
+  "title": "Linqo",
+  "subtitle": "Inicia conversaciones sin agregar contactos",
   "card": {
     "title": "Ingresa el número",
     "description": "Elige el país e ingresa el número de teléfono"
@@ -15,7 +15,7 @@
       "helper": "Ingresa solo los números sin el código de país",
       "error": "El número debe tener entre 8 y 15 dígitos"
     },
-    "submit": "Abrir en WhatsApp"
+    "submit": "Abrir conversación"
   },
   "footer": {
     "compatibility": "Funciona en escritorio y móvil",
@@ -27,7 +27,7 @@
       "description": "Por favor, ingresa un número de teléfono válido."
     },
     "success": {
-      "title": "¡WhatsApp abierto!",
+      "title": "¡Conversación abierta!",
       "description": "La conversación se ha iniciado en una nueva pestaña."
     }
   },
