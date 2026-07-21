@@ -12,21 +12,18 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      devOptions: {
-        enabled: true,
-      },
       includeAssets: ['favicon.ico', 'assets/apple-touch-icon.png'],
       manifestFilename: 'manifest.webmanifest',
       manifest: {
-        name: 'WhatsApp - Direct Message',
-        short_name: 'WPP DM',
-        description: 'Open WhatsApp chats without saving contacts.',
+        name: 'Linqo',
+        short_name: 'Linqo',
+        description: 'Open chats without saving contacts.',
         id: '/',
         start_url: '/',
         scope: '/',
         display: 'standalone',
         background_color: '#0b141a',
-        theme_color: '#25d366',
+        theme_color: '#52c658',
         icons: [
           {
             src: '/assets/icon-192.png',
