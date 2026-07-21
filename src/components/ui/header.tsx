@@ -8,10 +8,10 @@ export function Header({ className, ...props }: React.HTMLAttributes<HTMLElement
         <div className="flex items-center gap-2">
           <img 
             src="/assets/logo.png" 
-            alt="WhatsApp Direct Message Logo" 
+            alt="Linqo Logo" 
             className="w-8 h-8 object-contain"
           />
-          <span className="text-dark-text font-semibold">WhatsApp DM</span>
+          <span className="text-dark-text font-semibold">Linqo</span>
         </div>
         <LanguageSelector />
       </div>
