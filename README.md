@@ -11,7 +11,7 @@ A simple and convenient tool that allows you to start conversations without savi
 
 ### Live
 
-[Linqo](https://glhrmoura-wpp-dm.netlify.app/)
+[Linqo](https://glhrmoura-linqo.netlify.app/)
 
 ### License
 
