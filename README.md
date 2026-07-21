@@ -1,17 +1,17 @@
 <p align="center">
   <img
     style="object: contain; height: 150px"
-    src="https://i.imgur.com/BvfDXeK.png"
+    src="/public/assets/logo.png"
   />
 </p>
 
-## WhatsApp Direct Message
+## Linqo
 
-A simple and convenient tool that allows you to start WhatsApp conversations without saving phone numbers. Just enter the number and start chatting instantly - perfect for quick business communications or one-time contacts.
+A simple and convenient tool that allows you to start conversations without saving phone numbers. Just enter the number and start chatting instantly - perfect for quick business communications or one-time contacts.
 
 ### Live
 
-[WhatsApp Direct Message](https://glhrmoura-wpp-dm.netlify.app/)
+[Linqo](https://glhrmoura-wpp-dm.netlify.app/)
 
 ### License
 
