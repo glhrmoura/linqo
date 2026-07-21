@@ -74,7 +74,7 @@ const Index = () => {
     return countryCodeDigits + cleaned;
   };
 
-  const openWhatsApp = () => {
+  const openChat = () => {
     if (!isValidNumber) {
       toast({
         title: t('toast.invalidNumber.title'),
@@ -86,17 +86,15 @@ const Index = () => {
 
     const formattedNumber = formatPhoneNumber(countryCode, phoneNumber);
     
-    let whatsappUrl;
+    let chatUrl;
     
     if (isMobileDevice()) {
-      whatsappUrl = `whatsapp://send?phone=${formattedNumber}`;
+      chatUrl = `whatsapp://send?phone=${formattedNumber}`;
     } else {
-      whatsappUrl = `https://wa.me/${formattedNumber}`;
+      chatUrl = `https://wa.me/${formattedNumber}`;
     }
     
-    console.log('Opening WhatsApp with URL:', whatsappUrl);
-    console.log('Country Code:', countryCode, 'Phone Number:', phoneNumber, 'Formatted:', formattedNumber);
-    window.open(whatsappUrl, '_blank');
+    window.open(chatUrl, '_blank');
     
     toast({
       title: t('toast.success.title'),
@@ -116,7 +114,7 @@ const Index = () => {
                   {t('form.countryCode.label')}
                 </label>
                 <Select value={countryCode} onValueChange={setCountryCode}>
-                  <SelectTrigger className="bg-dark-bg-tertiary border-dark-bg-quaternary text-dark-text focus:border-whatsapp-green focus:ring-whatsapp-green/20 h-12">
+                  <SelectTrigger className="bg-dark-bg-tertiary border-dark-bg-quaternary text-dark-text focus:border-linqo-green focus:ring-linqo-green/20 h-12">
                     <div className="flex items-center gap-2">
                       <Globe size={20} className="text-dark-text-secondary" />
                       <SelectValue />
@@ -150,20 +148,20 @@ const Index = () => {
                     placeholder={t('form.phoneNumber.placeholder')}
                     value={phoneNumber}
                     onChange={handlePhoneChange}
-                    className="pl-12 pr-28 bg-dark-bg-tertiary border-dark-bg-quaternary text-dark-text placeholder:text-dark-text-secondary focus:border-whatsapp-green focus:ring-whatsapp-green/20 text-lg h-14"
+                    className="pl-12 pr-28 bg-dark-bg-tertiary border-dark-bg-quaternary text-dark-text placeholder:text-dark-text-secondary focus:border-linqo-green focus:ring-linqo-green/20 text-lg h-14"
                   />
                   <Button
                     type="button"
                     onClick={handlePastePhone}
                     variant="ghost"
-                    className="absolute right-2 top-1/2 h-8 -translate-y-1/2 rounded-md border border-dark-bg-quaternary bg-dark-bg-tertiary px-2 text-xs text-dark-text-secondary transition-all duration-200 hover:border-whatsapp-green/40 hover:bg-dark-bg-quaternary hover:text-dark-text"
+                    className="absolute right-2 top-1/2 h-8 -translate-y-1/2 rounded-md border border-dark-bg-quaternary bg-dark-bg-tertiary px-2 text-xs text-dark-text-secondary transition-all duration-200 hover:border-linqo-green/40 hover:bg-dark-bg-quaternary hover:text-dark-text"
                   >
                     Colar
                   </Button>
                   {phoneNumber && (
                     <div className="absolute right-16 top-1/2 transform -translate-y-1/2">
                       {isValidNumber ? (
-                        <CheckCircle className="text-whatsapp-green" size={20} />
+                        <CheckCircle className="text-linqo-green" size={20} />
                       ) : (
                         <AlertCircle className="text-red-500" size={20} />
                       )}
@@ -180,9 +178,9 @@ const Index = () => {
                 </p>
               </div>
               <Button
-                onClick={openWhatsApp}
+                onClick={openChat}
                 disabled={!phoneNumber || !isValidNumber}
-                className="w-full whatsapp-gradient hover:shadow-lg hover:shadow-whatsapp-green/25 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-lg h-14 transition-all duration-300 transform hover:scale-105"
+                className="w-full linqo-gradient hover:shadow-lg hover:shadow-linqo-green/25 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-lg h-14 transition-all duration-300 transform hover:scale-105"
               >
                 {t('form.submit')}
               </Button>
