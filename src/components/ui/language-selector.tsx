@@ -17,7 +17,7 @@ export function LanguageSelector() {
 
   return (
     <Select value={i18n.language} onValueChange={handleLanguageChange}>
-      <SelectTrigger className="w-auto gap-2 bg-dark-bg-tertiary border-dark-bg-quaternary text-dark-text focus:border-whatsapp-green focus:ring-whatsapp-green/20 h-10">
+      <SelectTrigger className="w-auto gap-2 bg-dark-bg-tertiary border-dark-bg-quaternary text-dark-text focus:border-linqo-green focus:ring-linqo-green/20 h-10">
         <div className="flex items-center gap-2">
           <SelectValue />
         </div>
