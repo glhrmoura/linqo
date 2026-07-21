@@ -56,10 +56,10 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				whatsapp: {
-					green: '#25D366',
-					'green-dark': '#128C7E',
-					'green-light': '#DCF8C6',
+				linqo: {
+					green: '#52C658',
+					'green-dark': '#37B65B',
+					'green-light': '#6BD75C',
 				},
 				dark: {
 					bg: '#0f172a',
@@ -98,8 +98,8 @@ export default {
 					'100%': { opacity: '1', transform: 'translateY(0)' },
 				},
 				'pulse-green': {
-					'0%, 100%': { boxShadow: '0 0 0 0 rgba(37, 211, 102, 0.7)' },
-					'70%': { boxShadow: '0 0 0 10px rgba(37, 211, 102, 0)' },
+					'0%, 100%': { boxShadow: '0 0 0 0 rgba(82, 198, 88, 0.7)' },
+					'70%': { boxShadow: '0 0 0 10px rgba(82, 198, 88, 0)' },
 				}
 			},
 			animation: {
