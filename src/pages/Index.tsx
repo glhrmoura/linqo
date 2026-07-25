@@ -7,6 +7,8 @@ import {
   Globe,
   ClipboardPaste,
   MessageCircle,
+  Send,
+  PhoneCall,
 } from 'lucide-react';
 
 import { useToast } from '@/hooks/use-toast';
@@ -16,6 +18,30 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Header } from '@/components/ui/header';
 import { cn } from '@/lib/utils';
+
+type Platform = 'whatsapp' | 'telegram' | 'viber';
+
+const platforms: {
+  id: Platform;
+  icon: typeof MessageCircle;
+  activeClass: string;
+}[] = [
+  {
+    id: 'whatsapp',
+    icon: MessageCircle,
+    activeClass: 'bg-linqo-green text-white',
+  },
+  {
+    id: 'telegram',
+    icon: Send,
+    activeClass: 'bg-[#229ED9] text-white',
+  },
+  {
+    id: 'viber',
+    icon: PhoneCall,
+    activeClass: 'bg-[#7360F2] text-white',
+  },
+];
 
 const countryCodes = [
   { code: '+55', countryCode: 'BR', flag: '🇧🇷' },
@@ -38,6 +64,7 @@ const countryCodes = [
 
 const Index = () => {
   const { t } = useTranslation();
+  const [platform, setPlatform] = useState<Platform>('whatsapp');
   const [countryCode, setCountryCode] = useState('+55');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [isValidNumber, setIsValidNumber] = useState(false);
@@ -81,6 +108,26 @@ const Index = () => {
     return countryCodeDigits + cleaned;
   };
 
+  const buildChatUrl = (selectedPlatform: Platform, phone: string) => {
+    const mobile = isMobileDevice();
+
+    if (selectedPlatform === 'telegram') {
+      return mobile
+        ? `tg://resolve?phone=${phone}`
+        : `https://t.me/+${phone}`;
+    }
+
+    if (selectedPlatform === 'viber') {
+      return mobile
+        ? `viber://chat?number=${encodeURIComponent(`+${phone}`)}`
+        : `https://viber.me/${phone}`;
+    }
+
+    return mobile
+      ? `whatsapp://send?phone=${phone}`
+      : `https://wa.me/${phone}`;
+  };
+
   const openChat = () => {
     if (!isValidNumber) {
       toast({
@@ -92,9 +139,7 @@ const Index = () => {
     }
 
     const formattedNumber = formatPhoneNumber(countryCode, phoneNumber);
-    const chatUrl = isMobileDevice()
-      ? `whatsapp://send?phone=${formattedNumber}`
-      : `https://wa.me/${formattedNumber}`;
+    const chatUrl = buildChatUrl(platform, formattedNumber);
 
     window.open(chatUrl, '_blank');
 
@@ -118,12 +163,36 @@ const Index = () => {
           <div className="space-y-5">
             <div className="space-y-2">
               <label className="text-xs font-medium uppercase tracking-wide text-dark-text-tertiary">
+                {t('form.platform.label')}
+              </label>
+              <div className="grid grid-cols-3 gap-1 rounded-xl border border-white/10 bg-dark-bg/50 p-1">
+                {platforms.map(({ id, icon: Icon, activeClass }) => (
+                  <button
+                    key={id}
+                    type="button"
+                    onClick={() => setPlatform(id)}
+                    className={cn(
+                      'flex h-11 items-center justify-center gap-1.5 rounded-lg px-1 text-xs font-medium transition-colors sm:gap-2 sm:text-sm',
+                      platform === id
+                        ? activeClass
+                        : 'text-dark-text-tertiary hover:bg-white/5 hover:text-dark-text'
+                    )}
+                  >
+                    <Icon className="h-4 w-4 shrink-0" />
+                    <span className="truncate">{t(`form.platform.${id}`)}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-medium uppercase tracking-wide text-dark-text-tertiary">
                 {t('form.countryCode.label')}
               </label>
               <Select value={countryCode} onValueChange={setCountryCode}>
                 <SelectTrigger className="h-12 rounded-xl border-white/10 bg-dark-bg/50 text-dark-text transition-colors focus:border-linqo-green/60 focus:ring-linqo-green/20">
                   <div className="flex items-center gap-2.5">
-                    <Globe className="h-4 w-4 text-linqo-green" />
+                    <Globe className="h-4 w-4 text-dark-text-tertiary" />
                     <SelectValue />
                   </div>
                 </SelectTrigger>
@@ -204,10 +273,17 @@ const Index = () => {
             <Button
               onClick={openChat}
               disabled={!phoneNumber || !isValidNumber}
-              className="linqo-gradient h-14 w-full rounded-xl text-base font-semibold text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-40"
+              className={cn(
+                'h-14 w-full rounded-xl text-base font-semibold text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-40',
+                platform === 'telegram' && 'bg-[#229ED9] hover:bg-[#1b8fc7]',
+                platform === 'viber' && 'bg-[#7360F2] hover:bg-[#6250e0]',
+                platform === 'whatsapp' && 'linqo-gradient'
+              )}
             >
-              <MessageCircle className="h-5 w-5" />
-              {t('form.submit')}
+              {platform === 'telegram' && <Send className="h-5 w-5" />}
+              {platform === 'viber' && <PhoneCall className="h-5 w-5" />}
+              {platform === 'whatsapp' && <MessageCircle className="h-5 w-5" />}
+              {t(`form.submit.${platform}`)}
             </Button>
           </div>
         </section>
