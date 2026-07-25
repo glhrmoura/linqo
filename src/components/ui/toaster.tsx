@@ -18,9 +18,9 @@ const toastIcons = {
 } as const
 
 const toastIconStyles = {
-  default: 'bg-white/5 text-dark-text-secondary',
-  success: 'bg-linqo-green/15 text-linqo-green',
-  destructive: 'bg-red-500/15 text-red-400',
+  default: 'bg-white/15 text-white',
+  success: 'bg-white/20 text-white',
+  destructive: 'bg-white/20 text-white',
 } as const
 
 export function Toaster() {
