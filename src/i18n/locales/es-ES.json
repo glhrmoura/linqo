@@ -6,6 +6,12 @@
     "description": "Elige el país e ingresa el número de teléfono"
   },
   "form": {
+    "platform": {
+      "label": "Aplicación",
+      "whatsapp": "WhatsApp",
+      "telegram": "Telegram",
+      "viber": "Viber"
+    },
     "countryCode": {
       "label": "Código de país"
     },
@@ -16,7 +22,11 @@
       "error": "El número debe tener entre 8 y 15 dígitos"
     },
     "paste": "Pegar",
-    "submit": "Abrir conversación"
+    "submit": {
+      "whatsapp": "Abrir en WhatsApp",
+      "telegram": "Abrir en Telegram",
+      "viber": "Abrir en Viber"
+    }
   },
   "footer": {
     "compatibility": "Funciona en escritorio y móvil",
