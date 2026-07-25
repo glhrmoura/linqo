@@ -19,7 +19,7 @@ export function LanguageSelector() {
     <Select value={i18n.language} onValueChange={handleLanguageChange}>
       <SelectTrigger className="h-10 w-auto gap-2 rounded-xl border-white/10 bg-white/5 text-dark-text transition-colors focus:border-linqo-green/50 focus:ring-linqo-green/20">
         <div className="flex items-center gap-2">
-          <Globe className="h-4 w-4 text-linqo-green" />
+          <Globe className="h-4 w-4 text-dark-text-tertiary" />
           <SelectValue />
         </div>
       </SelectTrigger>
