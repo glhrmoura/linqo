@@ -146,6 +146,7 @@ const Index = () => {
     toast({
       title: t('toast.success.title'),
       description: t('toast.success.description'),
+      variant: 'success',
     });
   };
 
