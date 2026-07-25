@@ -1,14 +1,21 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Phone, CheckCircle, AlertCircle, Globe } from 'lucide-react';
+import {
+  Phone,
+  Check,
+  CircleAlert,
+  Globe,
+  ClipboardPaste,
+  MessageCircle,
+} from 'lucide-react';
 
 import { useToast } from '@/hooks/use-toast';
 
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Header } from '@/components/ui/header';
+import { cn } from '@/lib/utils';
 
 const countryCodes = [
   { code: '+55', countryCode: 'BR', flag: '🇧🇷' },
@@ -61,16 +68,16 @@ const Index = () => {
       validatePhoneNumber(value);
     } catch {
       toast({
-        title: 'Nao foi possivel colar',
-        description: 'Permita acesso a area de transferencia no navegador.',
+        title: t('toast.pasteError.title'),
+        description: t('toast.pasteError.description'),
         variant: 'destructive',
       });
     }
   };
 
-  const formatPhoneNumber = (countryCode: string, number: string) => {
+  const formatPhoneNumber = (selectedCountryCode: string, number: string) => {
     const cleaned = number.replace(/\D/g, '');
-    const countryCodeDigits = countryCode.replace('+', '');
+    const countryCodeDigits = selectedCountryCode.replace('+', '');
     return countryCodeDigits + cleaned;
   };
 
@@ -85,17 +92,12 @@ const Index = () => {
     }
 
     const formattedNumber = formatPhoneNumber(countryCode, phoneNumber);
-    
-    let chatUrl;
-    
-    if (isMobileDevice()) {
-      chatUrl = `whatsapp://send?phone=${formattedNumber}`;
-    } else {
-      chatUrl = `https://wa.me/${formattedNumber}`;
-    }
-    
+    const chatUrl = isMobileDevice()
+      ? `whatsapp://send?phone=${formattedNumber}`
+      : `https://wa.me/${formattedNumber}`;
+
     window.open(chatUrl, '_blank');
-    
+
     toast({
       title: t('toast.success.title'),
       description: t('toast.success.description'),
@@ -103,90 +105,112 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-dark-bg flex flex-col">
-      <Header className="fixed top-0 left-0 right-0 z-50 bg-dark-bg" />
-      <main className="flex-1 flex items-start justify-center p-4 pt-24">
-        <div className="w-full max-w-md animate-fade-in">
-          <Card className="bg-dark-bg-secondary border-dark-bg-tertiary shadow-2xl">
-            <CardContent className="space-y-6 pt-6">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-dark-text-secondary">
-                  {t('form.countryCode.label')}
-                </label>
-                <Select value={countryCode} onValueChange={setCountryCode}>
-                  <SelectTrigger className="bg-dark-bg-tertiary border-dark-bg-quaternary text-dark-text focus:border-linqo-green focus:ring-linqo-green/20 h-12">
-                    <div className="flex items-center gap-2">
-                      <Globe size={20} className="text-dark-text-secondary" />
-                      <SelectValue />
-                    </div>
-                  </SelectTrigger>
-                  <SelectContent className="bg-dark-bg-tertiary border-dark-bg-quaternary">
-                    {countryCodes.map((country) => (
-                      <SelectItem 
-                        key={country.code} 
-                        value={country.code}
-                        className="text-dark-text hover:bg-dark-bg-quaternary focus:bg-dark-bg-quaternary"
-                      >
-                        <div className="flex items-center gap-3">
-                          <span className="text-lg">{country.flag}</span>
-                          <span className="font-medium">{country.code}</span>
-                          <span className="text-dark-text-secondary">{t(`countries.${country.countryCode}`)}</span>
-                        </div>
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-dark-text-secondary">
-                  {t('form.phoneNumber.label')}
-                </label>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-dark-text-secondary" size={20} />
-                  <Input
-                    type="tel"
-                    placeholder={t('form.phoneNumber.placeholder')}
-                    value={phoneNumber}
-                    onChange={handlePhoneChange}
-                    className="pl-12 pr-28 bg-dark-bg-tertiary border-dark-bg-quaternary text-dark-text placeholder:text-dark-text-secondary focus:border-linqo-green focus:ring-linqo-green/20 text-lg h-14"
-                  />
+    <div className="min-h-screen bg-dark-bg text-dark-text">
+      <Header className="fixed left-0 right-0 top-0 z-50 border-b border-white/5 bg-dark-bg/70 backdrop-blur-xl" />
+
+      <main className="mx-auto w-full max-w-md animate-fade-in px-4 pb-10 pt-24">
+        <section className="rounded-2xl border border-white/10 bg-dark-bg-secondary/80 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.35)] sm:p-6">
+          <div className="mb-6 space-y-1">
+            <h2 className="text-lg font-medium text-dark-text">{t('card.title')}</h2>
+            <p className="text-sm text-dark-text-tertiary">{t('card.description')}</p>
+          </div>
+
+          <div className="space-y-5">
+            <div className="space-y-2">
+              <label className="text-xs font-medium uppercase tracking-wide text-dark-text-tertiary">
+                {t('form.countryCode.label')}
+              </label>
+              <Select value={countryCode} onValueChange={setCountryCode}>
+                <SelectTrigger className="h-12 rounded-xl border-white/10 bg-dark-bg/50 text-dark-text transition-colors focus:border-linqo-green/60 focus:ring-linqo-green/20">
+                  <div className="flex items-center gap-2.5">
+                    <Globe className="h-4 w-4 text-linqo-green" />
+                    <SelectValue />
+                  </div>
+                </SelectTrigger>
+                <SelectContent className="border-white/10 bg-dark-bg-secondary">
+                  {countryCodes.map((country) => (
+                    <SelectItem
+                      key={country.code}
+                      value={country.code}
+                      className="text-dark-text focus:bg-white/5 focus:text-dark-text"
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-base">{country.flag}</span>
+                        <span className="font-medium tabular-nums">{country.code}</span>
+                        <span className="text-dark-text-tertiary">
+                          {t(`countries.${country.countryCode}`)}
+                        </span>
+                      </div>
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <label className="text-xs font-medium uppercase tracking-wide text-dark-text-tertiary">
+                {t('form.phoneNumber.label')}
+              </label>
+              <div className="relative">
+                <Phone className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-dark-text-tertiary" />
+                <Input
+                  type="tel"
+                  placeholder={t('form.phoneNumber.placeholder')}
+                  value={phoneNumber}
+                  onChange={handlePhoneChange}
+                  className="h-14 rounded-xl border-white/10 bg-dark-bg/50 pl-11 pr-28 text-base text-dark-text transition-colors placeholder:text-dark-text-tertiary focus-visible:border-linqo-green/60 focus-visible:ring-linqo-green/20"
+                />
+                <div className="absolute right-2 top-1/2 flex -translate-y-1/2 items-center gap-1">
+                  {phoneNumber && (
+                    <span
+                      className={cn(
+                        'flex h-8 w-8 items-center justify-center rounded-lg',
+                        isValidNumber
+                          ? 'bg-linqo-green/15 text-linqo-green'
+                          : 'bg-red-500/15 text-red-400'
+                      )}
+                    >
+                      {isValidNumber ? (
+                        <Check className="h-4 w-4" strokeWidth={2.5} />
+                      ) : (
+                        <CircleAlert className="h-4 w-4" />
+                      )}
+                    </span>
+                  )}
                   <Button
                     type="button"
                     onClick={handlePastePhone}
                     variant="ghost"
-                    className="absolute right-2 top-1/2 h-8 -translate-y-1/2 rounded-md border border-dark-bg-quaternary bg-dark-bg-tertiary px-2 text-xs text-dark-text-secondary transition-all duration-200 hover:border-linqo-green/40 hover:bg-dark-bg-quaternary hover:text-dark-text"
+                    size="sm"
+                    className="h-8 gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2.5 text-xs text-dark-text-secondary transition-all hover:border-linqo-green/30 hover:bg-linqo-green/10 hover:text-dark-text"
                   >
-                    Colar
+                    <ClipboardPaste className="h-3.5 w-3.5" />
+                    {t('form.paste')}
                   </Button>
-                  {phoneNumber && (
-                    <div className="absolute right-16 top-1/2 transform -translate-y-1/2">
-                      {isValidNumber ? (
-                        <CheckCircle className="text-linqo-green" size={20} />
-                      ) : (
-                        <AlertCircle className="text-red-500" size={20} />
-                      )}
-                    </div>
-                  )}
                 </div>
-                {phoneNumber && !isValidNumber && (
-                  <p className="text-red-400 text-sm">
-                    {t('form.phoneNumber.error')}
-                  </p>
-                )}
-                <p className="text-dark-text-secondary text-xs">
+              </div>
+              {phoneNumber && !isValidNumber ? (
+                <p className="flex items-center gap-1.5 text-sm text-red-400">
+                  <CircleAlert className="h-3.5 w-3.5 shrink-0" />
+                  {t('form.phoneNumber.error')}
+                </p>
+              ) : (
+                <p className="text-xs text-dark-text-tertiary">
                   {t('form.phoneNumber.helper')}
                 </p>
-              </div>
-              <Button
-                onClick={openChat}
-                disabled={!phoneNumber || !isValidNumber}
-                className="w-full linqo-gradient hover:shadow-lg hover:shadow-linqo-green/25 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-lg h-14 transition-all duration-300 transform hover:scale-105"
-              >
-                {t('form.submit')}
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
+              )}
+            </div>
+
+            <Button
+              onClick={openChat}
+              disabled={!phoneNumber || !isValidNumber}
+              className="linqo-gradient h-14 w-full rounded-xl text-base font-semibold text-white transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              <MessageCircle className="h-5 w-5" />
+              {t('form.submit')}
+            </Button>
+          </div>
+        </section>
       </main>
     </div>
   );

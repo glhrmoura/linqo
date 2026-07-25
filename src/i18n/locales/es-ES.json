@@ -15,6 +15,7 @@
       "helper": "Ingresa solo los números sin el código de país",
       "error": "El número debe tener entre 8 y 15 dígitos"
     },
+    "paste": "Pegar",
     "submit": "Abrir conversación"
   },
   "footer": {
@@ -29,6 +30,10 @@
     "success": {
       "title": "¡Conversación abierta!",
       "description": "La conversación se ha iniciado en una nueva pestaña."
+    },
+    "pasteError": {
+      "title": "No se pudo pegar",
+      "description": "Permite el acceso al portapapeles en el navegador."
     }
   },
   "languages": {

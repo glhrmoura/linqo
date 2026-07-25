@@ -15,6 +15,7 @@
       "helper": "Enter only the numbers without the country code",
       "error": "Number must be between 8 and 15 digits"
     },
+    "paste": "Paste",
     "submit": "Open chat"
   },
   "footer": {
@@ -29,6 +30,10 @@
     "success": {
       "title": "Chat opened!",
       "description": "The conversation has been started in a new tab."
+    },
+    "pasteError": {
+      "title": "Could not paste",
+      "description": "Allow clipboard access in your browser."
     }
   },
   "languages": {

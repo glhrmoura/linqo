@@ -15,6 +15,7 @@
       "helper": "Digite apenas os números sem o código do país",
       "error": "Número deve ter entre 8 e 15 dígitos"
     },
+    "paste": "Colar",
     "submit": "Abrir conversa"
   },
   "footer": {
@@ -29,6 +30,10 @@
     "success": {
       "title": "Conversa aberta!",
       "description": "A conversa foi iniciada em uma nova aba."
+    },
+    "pasteError": {
+      "title": "Não foi possível colar",
+      "description": "Permita acesso à área de transferência no navegador."
     }
   },
   "languages": {

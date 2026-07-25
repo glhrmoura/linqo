@@ -17,20 +17,21 @@ export function LanguageSelector() {
 
   return (
     <Select value={i18n.language} onValueChange={handleLanguageChange}>
-      <SelectTrigger className="w-auto gap-2 bg-dark-bg-tertiary border-dark-bg-quaternary text-dark-text focus:border-linqo-green focus:ring-linqo-green/20 h-10">
+      <SelectTrigger className="h-10 w-auto gap-2 rounded-xl border-white/10 bg-white/5 text-dark-text transition-colors focus:border-linqo-green/50 focus:ring-linqo-green/20">
         <div className="flex items-center gap-2">
+          <Globe className="h-4 w-4 text-linqo-green" />
           <SelectValue />
         </div>
       </SelectTrigger>
-      <SelectContent className="bg-dark-bg-tertiary border-dark-bg-quaternary">
+      <SelectContent className="border-white/10 bg-dark-bg-secondary">
         {languages.map((lang) => (
-          <SelectItem 
-            key={lang.code} 
+          <SelectItem
+            key={lang.code}
             value={lang.code}
-            className="text-dark-text hover:bg-dark-bg-quaternary focus:bg-dark-bg-quaternary"
+            className="text-dark-text focus:bg-white/5 focus:text-dark-text"
           >
             <div className="flex items-center gap-2">
-              <span className="text-lg">{lang.flag}</span>
+              <span className="text-base">{lang.flag}</span>
               <span>{t(`languages.${lang.code}`)}</span>
             </div>
           </SelectItem>
@@ -38,4 +39,4 @@ export function LanguageSelector() {
       </SelectContent>
     </Select>
   );
-} 
+}

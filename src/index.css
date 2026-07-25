@@ -39,8 +39,16 @@
 @layer base {
   * {
     @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  html {
     scroll-behavior: smooth;
-    overscroll-behavior: none;
   }
 
   body {
@@ -50,11 +58,15 @@
 
 @layer components {
   .linqo-gradient {
-    background: linear-gradient(135deg, #6BD75C 0%, #37B65B 100%);
+    background: #52C658;
   }
-  
+
+  .linqo-gradient:hover:not(:disabled) {
+    background: #6BD75C;
+  }
+
   .glass-effect {
-    backdrop-filter: blur(10px);
-    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(16px);
+    background: rgba(30, 41, 59, 0.72);
   }
 }
