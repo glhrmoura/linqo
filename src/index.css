@@ -49,10 +49,12 @@
 
   html {
     scroll-behavior: smooth;
+    overscroll-behavior: none;
   }
 
   body {
     @apply bg-dark-bg text-dark-text font-lexend;
+    overscroll-behavior: none;
   }
 }
 
