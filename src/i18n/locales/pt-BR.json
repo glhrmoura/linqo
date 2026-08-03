@@ -69,6 +69,10 @@
       "title": "Histórico desativado",
       "description": "Ative o histórico nas configurações para salvar e reutilizar os números neste dispositivo.",
       "openSettings": "Abrir configurações"
+    },
+    "openSheet": {
+      "title": "Abrir conversa",
+      "cancel": "Cancelar"
     }
   },
   "toast": {
