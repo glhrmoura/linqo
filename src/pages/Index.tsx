@@ -146,9 +146,9 @@ const Index = () => {
           </p>
         </header>
 
-        <section className="surface-panel p-4 md:p-3">
-          <div className="space-y-4">
-            <div className="rounded-2xl border border-white/[0.08] bg-dark-bg/50 p-4 md:p-3">
+        <section className="surface-panel p-4 md:p-6">
+          <div className="space-y-4 md:space-y-5">
+            <div className="rounded-2xl border border-white/[0.08] bg-dark-bg/50 p-4 md:p-5">
               <span className="mb-2 block text-[10px] font-medium uppercase tracking-wide text-dark-text-tertiary">
                 {t('form.platform.label')}
               </span>
@@ -159,8 +159,10 @@ const Index = () => {
                     type="button"
                     onClick={() => setPlatform(id)}
                     className={cn(
-                      'flex h-14 appearance-none flex-col items-center justify-center gap-1.5 rounded-xl border-0 bg-transparent px-2 text-[11px] font-medium outline-none [-webkit-tap-highlight-color:transparent] focus:outline-none focus-visible:outline-none sm:h-11 sm:flex-row sm:gap-2 sm:px-3 sm:text-sm',
-                      platform === id ? activeClass : 'text-dark-text-tertiary',
+                      'flex h-14 appearance-none flex-col items-center justify-center gap-1.5 rounded-xl border px-2 text-[11px] font-medium outline-none [-webkit-tap-highlight-color:transparent] focus:outline-none focus-visible:outline-none sm:h-11 sm:flex-row sm:gap-2 sm:px-3 sm:text-sm',
+                      platform === id
+                        ? cn('border-transparent', activeClass)
+                        : 'border-white/[0.08] bg-white/[0.03] text-dark-text-tertiary',
                     )}
                   >
                     <PlatformIcon platform={id} className="size-5" />
@@ -172,10 +174,10 @@ const Index = () => {
               </div>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-[minmax(13rem,0.85fr)_minmax(0,1.35fr)] md:items-stretch">
+            <div className="grid gap-4 md:grid-cols-[minmax(13rem,0.85fr)_minmax(0,1.35fr)] md:items-stretch md:gap-5">
               <div className="min-w-0">
                 <Select value={countryCode} onValueChange={setCountryCode}>
-                  <SelectTrigger className="h-auto min-h-0 items-center rounded-2xl border-white/[0.08] bg-dark-bg/50 px-4 py-4 text-dark-text shadow-none transition-colors focus:border-white/15 focus:ring-0 focus:ring-offset-0 accent-transparent [-webkit-tap-highlight-color:transparent] md:px-3 md:py-3 [&>svg]:!text-white [&>svg]:![stroke:#ffffff]">
+                  <SelectTrigger className="h-auto min-h-0 items-center rounded-2xl border-white/[0.08] bg-dark-bg/50 px-4 py-4 text-dark-text shadow-none transition-colors focus:border-white/15 focus:ring-0 focus:ring-offset-0 accent-transparent [-webkit-tap-highlight-color:transparent] [&>svg]:!text-white [&>svg]:![stroke:#ffffff]">
                     <div className="flex min-w-0 flex-1 flex-col items-start gap-1 text-left">
                       <span className="text-[10px] font-medium uppercase tracking-wide text-dark-text-tertiary">
                         {t('form.countryCode.label')}
@@ -211,9 +213,9 @@ const Index = () => {
                 </Select>
               </div>
 
-              <div className="relative mb-8 min-w-0">
+              <div className="relative mb-5 min-w-0">
                 <div className="flex items-stretch overflow-hidden rounded-2xl border border-white/[0.08] bg-dark-bg/50 transition-colors focus-within:border-white/15">
-                  <div className="relative min-w-0 flex-1 self-center px-4 py-4 md:px-3 md:py-3">
+                  <div className="relative min-w-0 flex-1 self-center px-4 py-4">
                     <label
                       htmlFor="phone-number"
                       className="block text-[10px] font-medium uppercase tracking-wide text-dark-text-tertiary"
@@ -256,7 +258,7 @@ const Index = () => {
                     type="button"
                     onClick={phoneNumber ? handleClearPhone : handlePastePhone}
                     variant="ghost"
-                    className="h-auto min-h-0 shrink-0 flex-col gap-1 self-stretch rounded-none border-0 border-l border-solid border-l-white/[0.08] bg-transparent px-4 text-xs text-dark-text-tertiary hover:bg-white/[0.04] hover:text-dark-text md:px-3"
+                    className="h-auto min-h-0 shrink-0 flex-col gap-1 self-stretch rounded-none border-0 border-l border-solid border-l-white/[0.08] bg-transparent px-4 text-xs text-dark-text-tertiary hover:bg-white/[0.04] hover:text-dark-text"
                   >
                     {phoneNumber ? (
                       <Eraser className="h-5 w-5" />
