@@ -145,10 +145,10 @@ const Index = () => {
                     type="button"
                     onClick={() => setPlatform(id)}
                     className={cn(
-                      'flex h-[4.25rem] flex-col items-center justify-center gap-1.5 rounded-xl border border-transparent px-2 text-[11px] font-medium outline-none transition-colors duration-200 [-webkit-tap-highlight-color:transparent] focus:outline-none focus-visible:outline-none sm:h-12 sm:flex-row sm:gap-2 sm:px-3 sm:text-sm',
+                      'flex h-[4.25rem] appearance-none flex-col items-center justify-center gap-1.5 rounded-xl border-0 bg-transparent px-2 text-[11px] font-medium outline-none [-webkit-tap-highlight-color:transparent] focus:outline-none focus-visible:outline-none sm:h-12 sm:flex-row sm:gap-2 sm:px-3 sm:text-sm',
                       platform === id
                         ? activeClass
-                        : 'text-dark-text-tertiary hover:bg-white/[0.04] hover:text-dark-text'
+                        : 'text-dark-text-tertiary'
                     )}
                   >
                     <PlatformIcon platform={id} className="size-5" />

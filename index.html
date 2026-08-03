@@ -1,19 +1,37 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" style="color-scheme: dark; background-color: #0f172a">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#52c658" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0f172a" />
     <title>Linqo</title>
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      html,
+      body,
+      #root {
+        min-height: 100%;
+        background-color: #0f172a;
+        color: #f8fafc;
+      }
+
+      button {
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: transparent;
+        color: inherit;
+        border: 0;
+        -webkit-tap-highlight-color: transparent;
+      }
+    </style>
   </head>
 
-  <body>
+  <body style="margin: 0; background-color: #0f172a; color: #f8fafc">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

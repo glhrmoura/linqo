@@ -58,6 +58,11 @@
     overscroll-behavior: none;
   }
 
+  button {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
   #root {
     isolation: isolate;
   }
