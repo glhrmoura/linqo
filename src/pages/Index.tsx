@@ -6,14 +6,12 @@ import {
   CircleAlert,
   Globe,
   ClipboardPaste,
-  MessageCircle,
-  Send,
-  PhoneCall,
 } from 'lucide-react';
 
 import { useToast } from '@/hooks/use-toast';
 import { formatPhoneNumber, openChatUrl, type Platform } from '@/lib/chat';
 import { addToNumberHistory } from '@/components/number-history/hooks/useNumberHistory';
+import { PlatformIcon } from '@/components/platform-icon';
 
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -23,22 +21,18 @@ import { cn } from '@/lib/utils';
 
 const platforms: {
   id: Platform;
-  icon: typeof MessageCircle;
   activeClass: string;
 }[] = [
   {
     id: 'whatsapp',
-    icon: MessageCircle,
     activeClass: 'bg-linqo-green text-white shadow-sm shadow-linqo-green/20',
   },
   {
     id: 'telegram',
-    icon: Send,
     activeClass: 'bg-[#229ED9] text-white shadow-sm shadow-[#229ED9]/20',
   },
   {
     id: 'viber',
-    icon: PhoneCall,
     activeClass: 'bg-[#7360F2] text-white shadow-sm shadow-[#7360F2]/20',
   },
 ];
@@ -144,21 +138,21 @@ const Index = () => {
               <label className="text-sm font-medium text-dark-text-secondary">
                 {t('form.platform.label')}
               </label>
-              <div className="grid grid-cols-3 gap-1 rounded-2xl border border-white/[0.06] bg-dark-bg/40 p-1.5">
-                {platforms.map(({ id, icon: Icon, activeClass }) => (
+              <div className="grid grid-cols-3 gap-1.5 rounded-2xl border border-white/[0.06] bg-dark-bg/40 p-1.5">
+                {platforms.map(({ id, activeClass }) => (
                   <button
                     key={id}
                     type="button"
                     onClick={() => setPlatform(id)}
                     className={cn(
-                      'flex h-11 items-center justify-center gap-1.5 rounded-xl px-1 text-xs font-medium transition-all duration-200 sm:gap-2 sm:text-sm',
+                      'flex h-[4.25rem] flex-col items-center justify-center gap-1.5 rounded-xl px-2 text-[11px] font-medium transition-all duration-200 sm:text-xs',
                       platform === id
                         ? activeClass
                         : 'text-dark-text-tertiary hover:bg-white/[0.04] hover:text-dark-text'
                     )}
                   >
-                    <Icon className="h-4 w-4 shrink-0" />
-                    <span className="truncate">{t(`form.platform.${id}`)}</span>
+                    <PlatformIcon platform={id} className="size-5" />
+                    <span className="leading-none">{t(`form.platform.${id}`)}</span>
                   </button>
                 ))}
               </div>
@@ -259,9 +253,7 @@ const Index = () => {
                 platform === 'whatsapp' && 'linqo-gradient'
               )}
             >
-              {platform === 'telegram' && <Send className="h-5 w-5" />}
-              {platform === 'viber' && <PhoneCall className="h-5 w-5" />}
-              {platform === 'whatsapp' && <MessageCircle className="h-5 w-5" />}
+              <PlatformIcon platform={platform} className="size-5" />
               {t(`form.submit.${platform}`)}
             </Button>
           </div>

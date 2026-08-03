@@ -45,10 +45,12 @@
   },
   "history": {
     "title": "History",
-    "subtitle": "{{count}} numbers",
+    "description": "Recently used numbers on this device.",
     "clear": "Clear history",
     "back": "Back",
     "remove": "Remove number",
+    "hideNumbers": "Hide numbers",
+    "showNumbers": "Show numbers",
     "clearConfirm": {
       "title": "Clear history?",
       "description": "All saved numbers will be removed from this device. This action cannot be undone.",

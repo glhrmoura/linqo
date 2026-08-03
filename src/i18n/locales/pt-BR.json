@@ -45,10 +45,12 @@
   },
   "history": {
     "title": "Histórico",
-    "subtitle": "{{count}} números",
+    "description": "Números usados recentemente neste dispositivo.",
     "clear": "Limpar histórico",
     "back": "Voltar",
     "remove": "Remover número",
+    "hideNumbers": "Ocultar números",
+    "showNumbers": "Mostrar números",
     "clearConfirm": {
       "title": "Limpar histórico?",
       "description": "Todos os números salvos serão removidos deste dispositivo. Essa ação não pode ser desfeita.",

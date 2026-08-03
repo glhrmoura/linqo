@@ -1,16 +1,11 @@
-import { MessageCircle, PhoneCall, Send, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
+import { PlatformIcon } from '@/components/platform-icon';
 import { cn } from '@/lib/utils';
 
 import type { NumberHistoryItem } from '../types';
 import { formatHistoryDateTime, formatHistoryPhone } from '../utils/format';
-
-const platformIcons = {
-  whatsapp: MessageCircle,
-  telegram: Send,
-  viber: PhoneCall,
-} as const;
 
 const platformIconStyles = {
   whatsapp: 'bg-linqo-green/15 text-linqo-green',
@@ -26,13 +21,18 @@ const platformBadgeStyles = {
 
 type HistoryItemProps = {
   item: NumberHistoryItem;
+  numbersHidden: boolean;
   onOpen: (item: NumberHistoryItem) => void;
   onRemove: (id: string) => void;
 };
 
-export const HistoryItem = ({ item, onOpen, onRemove }: HistoryItemProps) => {
+export const HistoryItem = ({
+  item,
+  numbersHidden,
+  onOpen,
+  onRemove,
+}: HistoryItemProps) => {
   const { t, i18n } = useTranslation();
-  const Icon = platformIcons[item.platform];
   const displayPhone = formatHistoryPhone(item.countryCode, item.phoneNumber);
   const { day, time } = formatHistoryDateTime(item.usedAt, i18n.language, {
     today: t('history.date.today'),
@@ -52,17 +52,31 @@ export const HistoryItem = ({ item, onOpen, onRemove }: HistoryItemProps) => {
             platformIconStyles[item.platform]
           )}
         >
-          <Icon className="size-4" strokeWidth={2} />
+          <PlatformIcon platform={item.platform} className="size-6" />
         </span>
 
         <span className="flex min-w-0 flex-1 flex-col gap-1.5">
-          <span className="flex min-w-0 items-baseline gap-1.5">
-            <span className="shrink-0 text-xs font-medium tabular-nums text-dark-text-tertiary">
-              {item.countryCode}
+          <span className="relative flex min-h-[14px] min-w-0 items-center">
+            <span
+              className={cn(
+                'flex min-w-0 items-baseline gap-1.5',
+                numbersHidden && 'invisible'
+              )}
+              aria-hidden={numbersHidden}
+            >
+              <span className="shrink-0 text-xs font-medium tabular-nums text-dark-text-tertiary">
+                {item.countryCode}
+              </span>
+              <span className="truncate text-sm font-semibold leading-none tracking-tight tabular-nums text-dark-text">
+                {displayPhone}
+              </span>
             </span>
-            <span className="truncate text-sm font-semibold leading-none tracking-tight tabular-nums text-dark-text">
-              {displayPhone}
-            </span>
+            {numbersHidden && (
+              <span className="absolute inset-0 flex items-center gap-1.5">
+                <span className="h-3 w-7 shrink-0 rounded-full bg-white/10" />
+                <span className="h-3.5 w-[9.5rem] max-w-[70%] rounded-full bg-white/10" />
+              </span>
+            )}
           </span>
 
           <span className="flex min-w-0 items-center gap-2">
@@ -87,7 +101,7 @@ export const HistoryItem = ({ item, onOpen, onRemove }: HistoryItemProps) => {
         type="button"
         onClick={() => onRemove(item.id)}
         aria-label={t('history.remove')}
-        className="mr-3 flex size-8 shrink-0 items-center justify-center rounded-lg text-dark-text-tertiary opacity-45 transition-all duration-200 hover:opacity-100 hover:text-dark-text"
+        className="mr-3 flex size-8 shrink-0 items-center justify-center rounded-lg border border-white/15 bg-white/[0.03] text-dark-text-tertiary transition-all duration-200 hover:border-white/25 hover:bg-white/[0.06] hover:text-dark-text"
       >
         <X className="size-4" />
       </button>

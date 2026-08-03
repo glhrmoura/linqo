@@ -26,7 +26,7 @@ export const ClearHistoryDialog = ({
 
   return (
     <AlertDialog open={open} onOpenChange={onOpenChange}>
-      <AlertDialogContent className="max-w-sm rounded-2xl border-white/10 bg-dark-bg-secondary text-dark-text sm:rounded-2xl">
+      <AlertDialogContent className="w-[calc(100%-2rem)] max-w-sm rounded-2xl border-white/10 bg-dark-bg-secondary text-dark-text sm:rounded-2xl">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-dark-text">
             {t('history.clearConfirm.title')}
@@ -35,13 +35,13 @@ export const ClearHistoryDialog = ({
             {t('history.clearConfirm.description')}
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel className="rounded-xl border-white/10 bg-transparent text-dark-text-secondary hover:bg-white/5 hover:text-dark-text">
+        <AlertDialogFooter className="flex-row gap-2 sm:space-x-0">
+          <AlertDialogCancel className="mt-0 flex-1 rounded-xl border-white/10 bg-transparent text-dark-text-secondary hover:bg-white/5 hover:text-dark-text">
             {t('history.clearConfirm.cancel')}
           </AlertDialogCancel>
           <AlertDialogAction
             onClick={onConfirm}
-            className="rounded-xl bg-red-500 text-white hover:bg-red-500/90"
+            className="mt-0 flex-1 rounded-xl bg-red-500 text-white hover:bg-red-500/90"
           >
             {t('history.clearConfirm.confirm')}
           </AlertDialogAction>

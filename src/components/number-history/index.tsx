@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { openChatUrl } from '@/lib/chat';
@@ -12,11 +12,26 @@ import { HistoryItem } from './components/HistoryItem';
 import { useNumberHistory } from './hooks/useNumberHistory';
 import type { NumberHistoryItem } from './types';
 
+const HIDDEN_KEY = 'linqo-history-numbers-hidden';
+
+const readNumbersHidden = () => {
+  try {
+    return localStorage.getItem(HIDDEN_KEY) === '1';
+  } catch {
+    return false;
+  }
+};
+
 export const NumberHistory = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
   const { items, clearItems, removeItem, touchItem } = useNumberHistory();
   const [clearOpen, setClearOpen] = useState(false);
+  const [numbersHidden, setNumbersHidden] = useState(readNumbersHidden);
+
+  useEffect(() => {
+    localStorage.setItem(HIDDEN_KEY, numbersHidden ? '1' : '0');
+  }, [numbersHidden]);
 
   const handleOpen = (item: NumberHistoryItem) => {
     openChatUrl(item.platform, item.formattedNumber);
@@ -51,7 +66,12 @@ export const NumberHistory = () => {
     <div className="page-shell">
       <Header />
       <div className="container mx-auto flex max-w-2xl animate-fade-in flex-col gap-6 px-4 pb-[calc(2rem+env(safe-area-inset-bottom,0px))] pt-[calc(5.5rem+env(safe-area-inset-top,0px))]">
-        <HistoryHeader count={items.length} onClear={handleRequestClear} />
+        <HistoryHeader
+          count={items.length}
+          numbersHidden={numbersHidden}
+          onToggleNumbers={() => setNumbersHidden((current) => !current)}
+          onClear={handleRequestClear}
+        />
         {items.length === 0 ? (
           <HistoryEmpty />
         ) : (
@@ -60,6 +80,7 @@ export const NumberHistory = () => {
               <HistoryItem
                 key={item.id}
                 item={item}
+                numbersHidden={numbersHidden}
                 onOpen={handleOpen}
                 onRemove={removeItem}
               />
