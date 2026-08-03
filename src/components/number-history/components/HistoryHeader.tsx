@@ -28,26 +28,24 @@ export const HistoryHeader = ({
           {t('history.description')}
         </p>
       </div>
-      {showActions && (
+      {showActions && count > 0 && (
         <div className="flex shrink-0 items-center gap-2">
           <button
             type="button"
             onClick={onToggleNumbers}
-            disabled={count === 0}
             aria-label={
               numbersHidden ? t('history.showNumbers') : t('history.hideNumbers')
             }
             aria-pressed={numbersHidden}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/[0.03] text-dark-text-tertiary transition-colors hover:border-white/25 hover:bg-white/[0.06] hover:text-dark-text disabled:cursor-not-allowed disabled:opacity-35"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/[0.03] text-dark-text-tertiary transition-colors hover:border-white/25 hover:bg-white/[0.06] hover:text-dark-text"
           >
             {numbersHidden ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
           </button>
           <button
             type="button"
             onClick={onClear}
-            disabled={count === 0}
             aria-label={t('history.clear')}
-            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/[0.03] text-dark-text-tertiary transition-colors hover:border-white/25 hover:bg-white/[0.06] hover:text-dark-text disabled:cursor-not-allowed disabled:opacity-35"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/[0.03] text-dark-text-tertiary transition-colors hover:border-white/25 hover:bg-white/[0.06] hover:text-dark-text"
           >
             <Trash2 className="h-4 w-4" />
           </button>
