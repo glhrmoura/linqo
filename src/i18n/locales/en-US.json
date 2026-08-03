@@ -33,7 +33,6 @@
     "phoneNumber": {
       "label": "Phone number",
       "placeholder": "Ex: 11 99999-9999",
-      "helper": "Enter only the numbers without the country code",
       "error": "Number must be between 8 and 15 digits"
     },
     "paste": "Paste",
