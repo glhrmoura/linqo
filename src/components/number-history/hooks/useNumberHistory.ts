@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react';
 
 import type { Platform } from '@/lib/chat';
+import { isHistoryEnabled } from '@/components/config/utils/history-setting';
 
 import type { NumberHistoryItem } from '../types';
 import {
@@ -26,6 +27,9 @@ export const useNumberHistory = () => {
 
   const addItem = useCallback(
     (entry: AddHistoryInput) => {
+      if (!isHistoryEnabled()) {
+        return;
+      }
       persist(upsertHistoryItem(readHistory(), entry));
     },
     [persist]
@@ -70,6 +74,9 @@ export const useNumberHistory = () => {
 };
 
 export const addToNumberHistory = (entry: AddHistoryInput) => {
+  if (!isHistoryEnabled()) {
+    return;
+  }
   const items = readHistory();
   writeHistory(upsertHistoryItem(items, entry));
 };
