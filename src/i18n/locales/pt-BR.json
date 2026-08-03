@@ -33,7 +33,6 @@
     "phoneNumber": {
       "label": "Número de telefone",
       "placeholder": "Ex: 11 99999-9999",
-      "helper": "Digite apenas os números sem o código do país",
       "error": "Número deve ter entre 8 e 15 dígitos"
     },
     "paste": "Colar",
