@@ -17,8 +17,8 @@
     "langEs": "Español"
   },
   "card": {
-    "title": "Digite o número",
-    "description": "Escolha o país e insira o número de telefone"
+    "title": "Abrir conversa",
+    "description": "Sem adicionar contato, só o número"
   },
   "form": {
     "platform": {

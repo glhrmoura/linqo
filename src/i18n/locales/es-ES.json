@@ -17,8 +17,8 @@
     "langEs": "Español"
   },
   "card": {
-    "title": "Ingresa el número",
-    "description": "Elige el país e ingresa el número de teléfono"
+    "title": "Abrir chat",
+    "description": "Sin agregar contacto, solo el número"
   },
   "form": {
     "platform": {
