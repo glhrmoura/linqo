@@ -71,11 +71,6 @@
     background: #6BD75C;
   }
 
-  .glass-effect {
-    backdrop-filter: blur(16px);
-    background: rgba(30, 41, 59, 0.72);
-  }
-
   .page-shell {
     position: relative;
     min-height: 100dvh;

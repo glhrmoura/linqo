@@ -12,7 +12,7 @@ export const formatPhoneNumber = (selectedCountryCode: string, number: string) =
   return countryCodeDigits + cleaned;
 };
 
-export const buildChatUrl = (selectedPlatform: Platform, phone: string) => {
+const buildChatUrl = (selectedPlatform: Platform, phone: string) => {
   const mobile = isMobileDevice();
 
   if (selectedPlatform === 'telegram') {

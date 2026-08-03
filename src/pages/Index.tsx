@@ -38,22 +38,22 @@ const platforms: {
 ];
 
 const countryCodes = [
-  { code: '+55', countryCode: 'BR', flag: '🇧🇷' },
-  { code: '+1', countryCode: 'US', flag: '🇺🇸' },
-  { code: '+34', countryCode: 'ES', flag: '🇪🇸' },
-  { code: '+351', countryCode: 'PT', flag: '🇵🇹' },
-  { code: '+44', countryCode: 'GB', flag: '🇬🇧' },
-  { code: '+33', countryCode: 'FR', flag: '🇫🇷' },
-  { code: '+49', countryCode: 'DE', flag: '🇩🇪' },
-  { code: '+39', countryCode: 'IT', flag: '🇮🇹' },
-  { code: '+52', countryCode: 'MX', flag: '🇲🇽' },
-  { code: '+54', countryCode: 'AR', flag: '🇦🇷' },
-  { code: '+56', countryCode: 'CL', flag: '🇨🇱' },
-  { code: '+57', countryCode: 'CO', flag: '🇨🇴' },
-  { code: '+51', countryCode: 'PE', flag: '🇵🇪' },
-  { code: '+86', countryCode: 'CN', flag: '🇨🇳' },
-  { code: '+81', countryCode: 'JP', flag: '🇯🇵' },
-  { code: '+91', countryCode: 'IN', flag: '🇮🇳' },
+  { code: '+55', countryCode: 'BR' },
+  { code: '+1', countryCode: 'US' },
+  { code: '+34', countryCode: 'ES' },
+  { code: '+351', countryCode: 'PT' },
+  { code: '+44', countryCode: 'GB' },
+  { code: '+33', countryCode: 'FR' },
+  { code: '+49', countryCode: 'DE' },
+  { code: '+39', countryCode: 'IT' },
+  { code: '+52', countryCode: 'MX' },
+  { code: '+54', countryCode: 'AR' },
+  { code: '+56', countryCode: 'CL' },
+  { code: '+57', countryCode: 'CO' },
+  { code: '+51', countryCode: 'PE' },
+  { code: '+86', countryCode: 'CN' },
+  { code: '+81', countryCode: 'JP' },
+  { code: '+91', countryCode: 'IN' },
 ];
 
 const Index = () => {

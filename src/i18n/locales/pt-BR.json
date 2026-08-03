@@ -3,7 +3,6 @@
   "subtitle": "Inicie conversas sem adicionar aos contatos",
   "nav": {
     "back": "Voltar",
-    "backHome": "Voltar para início",
     "history": "Histórico",
     "settings": "Configurações"
   },
@@ -48,7 +47,6 @@
     "title": "Histórico",
     "description": "Números usados recentemente neste dispositivo.",
     "clear": "Limpar histórico",
-    "back": "Voltar",
     "remove": "Remover número",
     "hideNumbers": "Ocultar números",
     "showNumbers": "Mostrar números",
@@ -72,10 +70,6 @@
       "openSettings": "Abrir configurações"
     }
   },
-  "footer": {
-    "compatibility": "Funciona em desktop e mobile",
-    "privacy": "O histórico fica apenas neste dispositivo"
-  },
   "toast": {
     "invalidNumber": {
       "title": "Número inválido",
@@ -93,11 +87,6 @@
       "title": "Histórico limpo",
       "description": "Todos os números foram removidos deste dispositivo."
     }
-  },
-  "languages": {
-    "pt-BR": "Português",
-    "en-US": "English",
-    "es-ES": "Español"
   },
   "countries": {
     "BR": "Brasil",

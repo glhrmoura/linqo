@@ -33,4 +33,3 @@ export function ConfigPage() {
   );
 }
 
-export default ConfigPage;
