@@ -1,6 +1,21 @@
 {
   "title": "Linqo",
   "subtitle": "Start conversations without adding contacts",
+  "nav": {
+    "back": "Back",
+    "backHome": "Back to home",
+    "history": "History",
+    "settings": "Settings"
+  },
+  "config": {
+    "title": "Settings",
+    "description": "Customize Linqo.",
+    "language": "Language",
+    "languageDescription": "Choose the app language.",
+    "langPt": "Português (Brasil)",
+    "langEn": "English",
+    "langEs": "Español"
+  },
   "card": {
     "title": "Enter the number",
     "description": "Choose the country and enter the phone number"
@@ -28,9 +43,20 @@
       "viber": "Open in Viber"
     }
   },
+  "history": {
+    "title": "History",
+    "subtitle": "{{count}} numbers",
+    "clear": "Clear history",
+    "back": "Back",
+    "remove": "Remove number",
+    "empty": {
+      "title": "No numbers yet",
+      "description": "Numbers you open will appear here for quick access."
+    }
+  },
   "footer": {
     "compatibility": "Works on desktop and mobile",
-    "privacy": "Your data is not stored or shared"
+    "privacy": "History stays only on this device"
   },
   "toast": {
     "invalidNumber": {
@@ -44,6 +70,10 @@
     "pasteError": {
       "title": "Could not paste",
       "description": "Allow clipboard access in your browser."
+    },
+    "historyCleared": {
+      "title": "History cleared",
+      "description": "All numbers were removed from this device."
     }
   },
   "languages": {

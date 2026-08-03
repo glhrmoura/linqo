@@ -1,39 +1,40 @@
 import { useTranslation } from 'react-i18next';
-import { Globe } from 'lucide-react';
+
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { cn } from '@/lib/utils';
 
-const languages = [
-  { code: 'pt-BR', flag: '🇧🇷' },
-  { code: 'en-US', flag: '🇺🇸' },
-  { code: 'es-ES', flag: '🇪🇸' },
-];
+import { LANGUAGES } from '@/components/config/constants';
 
-export function LanguageSelector() {
+type LanguageSelectorProps = {
+  className?: string;
+};
+
+export function LanguageSelector({ className }: LanguageSelectorProps) {
   const { i18n, t } = useTranslation();
 
   const handleLanguageChange = (value: string) => {
-    i18n.changeLanguage(value);
+    void i18n.changeLanguage(value);
   };
 
   return (
     <Select value={i18n.language} onValueChange={handleLanguageChange}>
-      <SelectTrigger className="h-10 w-auto gap-2 rounded-xl border-white/10 bg-white/5 text-dark-text transition-colors focus:border-linqo-green/50 focus:ring-linqo-green/20">
-        <div className="flex items-center gap-2">
-          <Globe className="h-4 w-4 text-dark-text-tertiary" />
-          <SelectValue />
-        </div>
+      <SelectTrigger
+        aria-label={t('config.language')}
+        className={cn(
+          'h-12 w-full rounded-xl border-white/10 bg-dark-bg/50 px-5 text-dark-text focus:border-white/10 focus:ring-0 focus:ring-offset-0',
+          className
+        )}
+      >
+        <SelectValue />
       </SelectTrigger>
       <SelectContent className="border-white/10 bg-dark-bg-secondary">
-        {languages.map((lang) => (
+        {LANGUAGES.map((lang) => (
           <SelectItem
-            key={lang.code}
-            value={lang.code}
+            key={lang.value}
+            value={lang.value}
             className="text-dark-text focus:bg-white/5 focus:text-dark-text"
           >
-            <div className="flex items-center gap-2">
-              <span className="text-base">{lang.flag}</span>
-              <span>{t(`languages.${lang.code}`)}</span>
-            </div>
+            {t(`config.${lang.labelKey}`)}
           </SelectItem>
         ))}
       </SelectContent>

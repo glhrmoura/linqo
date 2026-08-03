@@ -12,14 +12,14 @@ import {
 } from 'lucide-react';
 
 import { useToast } from '@/hooks/use-toast';
+import { formatPhoneNumber, openChatUrl, type Platform } from '@/lib/chat';
+import { addToNumberHistory } from '@/components/number-history/hooks/useNumberHistory';
 
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Header } from '@/components/ui/header';
 import { cn } from '@/lib/utils';
-
-type Platform = 'whatsapp' | 'telegram' | 'viber';
 
 const platforms: {
   id: Platform;
@@ -70,10 +70,6 @@ const Index = () => {
   const [isValidNumber, setIsValidNumber] = useState(false);
   const { toast } = useToast();
 
-  const isMobileDevice = () => {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  };
-
   const validatePhoneNumber = (number: string) => {
     const cleaned = number.replace(/\D/g, '');
     const isValid = cleaned.length >= 8 && cleaned.length <= 15;
@@ -102,32 +98,6 @@ const Index = () => {
     }
   };
 
-  const formatPhoneNumber = (selectedCountryCode: string, number: string) => {
-    const cleaned = number.replace(/\D/g, '');
-    const countryCodeDigits = selectedCountryCode.replace('+', '');
-    return countryCodeDigits + cleaned;
-  };
-
-  const buildChatUrl = (selectedPlatform: Platform, phone: string) => {
-    const mobile = isMobileDevice();
-
-    if (selectedPlatform === 'telegram') {
-      return mobile
-        ? `tg://resolve?phone=${phone}`
-        : `https://t.me/+${phone}`;
-    }
-
-    if (selectedPlatform === 'viber') {
-      return mobile
-        ? `viber://chat?number=${encodeURIComponent(`+${phone}`)}`
-        : `https://viber.me/${phone}`;
-    }
-
-    return mobile
-      ? `whatsapp://send?phone=${phone}`
-      : `https://wa.me/${phone}`;
-  };
-
   const openChat = () => {
     if (!isValidNumber) {
       toast({
@@ -139,9 +109,15 @@ const Index = () => {
     }
 
     const formattedNumber = formatPhoneNumber(countryCode, phoneNumber);
-    const chatUrl = buildChatUrl(platform, formattedNumber);
 
-    window.open(chatUrl, '_blank');
+    addToNumberHistory({
+      platform,
+      countryCode,
+      phoneNumber,
+      formattedNumber,
+    });
+
+    openChatUrl(platform, formattedNumber);
 
     toast({
       title: t('toast.success.title'),
@@ -152,9 +128,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-dark-bg text-dark-text">
-      <Header className="fixed left-0 right-0 top-0 z-50 border-b border-white/5 bg-dark-bg/70 backdrop-blur-xl" />
+      <Header />
 
-      <main className="mx-auto w-full max-w-md animate-fade-in px-4 pb-10 pt-24">
+      <div className="container mx-auto flex max-w-2xl animate-fade-in flex-col gap-6 px-4 pb-[calc(2rem+env(safe-area-inset-bottom,0px))] pt-[calc(5.5rem+env(safe-area-inset-top,0px))]">
         <section className="rounded-2xl border border-white/10 bg-dark-bg-secondary/80 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.35)] sm:p-6">
           <div className="mb-6 space-y-1">
             <h2 className="text-lg font-medium text-dark-text">{t('card.title')}</h2>
@@ -288,7 +264,7 @@ const Index = () => {
             </Button>
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 };
