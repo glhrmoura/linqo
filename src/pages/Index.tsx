@@ -6,6 +6,7 @@ import {
   CircleAlert,
   Globe,
   ClipboardPaste,
+  Eraser,
 } from 'lucide-react';
 
 import { useToast } from '@/hooks/use-toast';
@@ -90,6 +91,11 @@ const Index = () => {
         variant: 'destructive',
       });
     }
+  };
+
+  const handleClearPhone = () => {
+    setPhoneNumber('');
+    setIsValidNumber(false);
   };
 
   const openChat = () => {
@@ -191,7 +197,7 @@ const Index = () => {
                 </Select>
               </div>
 
-              <div className="min-w-0">
+              <div className="relative min-w-0 mb-2 pb-6">
                 <div className="flex h-[4.5rem] items-stretch overflow-hidden rounded-2xl border border-white/[0.08] bg-dark-bg/50 transition-colors focus-within:border-white/15">
                   <div className="relative min-w-0 flex-1 self-center px-4">
                     <label
@@ -230,16 +236,27 @@ const Index = () => {
                   )}
                   <Button
                     type="button"
-                    onClick={handlePastePhone}
+                    onClick={phoneNumber ? handleClearPhone : handlePastePhone}
                     variant="ghost"
                     className="h-auto min-h-0 shrink-0 flex-col gap-1 self-stretch rounded-none border-0 border-l border-solid border-l-white/[0.08] bg-transparent px-3 text-xs text-dark-text-tertiary hover:bg-white/[0.04] hover:text-dark-text"
                   >
-                    <ClipboardPaste className="h-5 w-5" />
-                    {t('form.paste')}
+                    {phoneNumber ? (
+                      <Eraser className="h-5 w-5" />
+                    ) : (
+                      <ClipboardPaste className="h-5 w-5" />
+                    )}
+                    <span className="grid text-center">
+                      <span className={cn('col-start-1 row-start-1', phoneNumber && 'invisible')}>
+                        {t('form.paste')}
+                      </span>
+                      <span className={cn('col-start-1 row-start-1', !phoneNumber && 'invisible')}>
+                        {t('form.clear')}
+                      </span>
+                    </span>
                   </Button>
                 </div>
                 {phoneNumber && !isValidNumber && (
-                  <p className="mt-2 flex items-center gap-1.5 text-sm text-red-400">
+                  <p className="pointer-events-none absolute left-0 top-[4.5rem] mt-2 flex items-center gap-1.5 text-sm text-red-400">
                     <CircleAlert className="h-3.5 w-3.5 shrink-0" />
                     {t('form.phoneNumber.error')}
                   </p>

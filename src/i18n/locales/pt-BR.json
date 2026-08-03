@@ -1,6 +1,6 @@
 {
   "title": "Linqo",
-  "subtitle": "Inicie conversas sem adicionar aos contatos",
+  "subtitle": "Abra conversas sem salvar o contato",
   "nav": {
     "back": "Voltar",
     "history": "Histórico",
@@ -19,7 +19,7 @@
   },
   "card": {
     "title": "Abrir conversa",
-    "description": "Sem adicionar contato, só o número"
+    "description": "Basta o número. A conversa abre sem salvar contato."
   },
   "form": {
     "platform": {
@@ -37,6 +37,7 @@
       "error": "Número deve ter entre 8 e 15 dígitos"
     },
     "paste": "Colar",
+    "clear": "Limpar",
     "submit": {
       "whatsapp": "Abrir no WhatsApp",
       "telegram": "Abrir no Telegram",

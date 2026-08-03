@@ -1,6 +1,6 @@
 {
   "title": "Linqo",
-  "subtitle": "Start conversations without adding contacts",
+  "subtitle": "Open chats without saving the contact",
   "nav": {
     "back": "Back",
     "history": "History",
@@ -19,7 +19,7 @@
   },
   "card": {
     "title": "Open a chat",
-    "description": "No contact needed, just the number"
+    "description": "Just the number. The chat opens without saving a contact."
   },
   "form": {
     "platform": {
@@ -37,6 +37,7 @@
       "error": "Number must be between 8 and 15 digits"
     },
     "paste": "Paste",
+    "clear": "Clear",
     "submit": {
       "whatsapp": "Open in WhatsApp",
       "telegram": "Open in Telegram",
