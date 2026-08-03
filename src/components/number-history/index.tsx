@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { openChatUrl } from '@/lib/chat';
+import { openChatUrl, type Platform } from '@/lib/chat';
 import { useToast } from '@/hooks/use-toast';
 import { useHistoryEnabled } from '@/components/config/hooks/useHistoryEnabled';
 import { Header } from '@/components/ui/header';
@@ -11,6 +11,7 @@ import { HistoryDisabled } from './components/HistoryDisabled';
 import { HistoryEmpty } from './components/HistoryEmpty';
 import { HistoryHeader } from './components/HistoryHeader';
 import { HistoryItem } from './components/HistoryItem';
+import { HistoryOpenSheet } from './components/HistoryOpenSheet';
 import { useNumberHistory } from './hooks/useNumberHistory';
 import type { NumberHistoryItem } from './types';
 
@@ -28,17 +29,34 @@ export const NumberHistory = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
   const [historyEnabled] = useHistoryEnabled();
-  const { items, clearItems, removeItem, touchItem } = useNumberHistory();
+  const { items, clearItems, removeItem, addItem } = useNumberHistory();
   const [clearOpen, setClearOpen] = useState(false);
+  const [selectedItem, setSelectedItem] = useState<NumberHistoryItem | null>(
+    null,
+  );
   const [numbersHidden, setNumbersHidden] = useState(readNumbersHidden);
 
   useEffect(() => {
     localStorage.setItem(HIDDEN_KEY, numbersHidden ? '1' : '0');
   }, [numbersHidden]);
 
-  const handleOpen = (item: NumberHistoryItem) => {
-    openChatUrl(item.platform, item.formattedNumber);
-    touchItem(item.id);
+  const handleSelect = (item: NumberHistoryItem) => {
+    setSelectedItem(item);
+  };
+
+  const handleOpenPlatform = (platform: Platform) => {
+    if (!selectedItem) {
+      return;
+    }
+
+    openChatUrl(platform, selectedItem.formattedNumber);
+    addItem({
+      platform,
+      countryCode: selectedItem.countryCode,
+      phoneNumber: selectedItem.phoneNumber,
+      formattedNumber: selectedItem.formattedNumber,
+    });
+    setSelectedItem(null);
 
     toast({
       title: t('toast.success.title'),
@@ -87,7 +105,7 @@ export const NumberHistory = () => {
                 key={item.id}
                 item={item}
                 numbersHidden={numbersHidden}
-                onOpen={handleOpen}
+                onOpen={handleSelect}
                 onRemove={removeItem}
               />
             ))}
@@ -100,7 +118,17 @@ export const NumberHistory = () => {
         onOpenChange={setClearOpen}
         onConfirm={handleConfirmClear}
       />
+
+      <HistoryOpenSheet
+        item={selectedItem}
+        open={selectedItem !== null}
+        onOpenChange={(open) => {
+          if (!open) {
+            setSelectedItem(null);
+          }
+        }}
+        onOpenPlatform={handleOpenPlatform}
+      />
     </div>
   );
 };
-
