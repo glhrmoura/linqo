@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeft, History, Settings } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -7,7 +7,22 @@ import { cn } from '@/lib/utils';
 export function Header({ className, ...props }: React.HTMLAttributes<HTMLElement>) {
   const { t } = useTranslation();
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const isSecondaryPage = pathname === '/history' || pathname === '/config';
+
+  const handleBack = () => {
+    const historyIndex =
+      typeof window.history.state?.idx === 'number'
+        ? window.history.state.idx
+        : 0;
+
+    if (historyIndex > 0) {
+      navigate(-1);
+      return;
+    }
+
+    navigate('/', { replace: true });
+  };
 
   return (
     <header
@@ -38,14 +53,15 @@ export function Header({ className, ...props }: React.HTMLAttributes<HTMLElement
           </Link>
 
           {isSecondaryPage ? (
-            <Link
-              to="/"
-              aria-label={t('nav.backHome')}
+            <button
+              type="button"
+              onClick={handleBack}
+              aria-label={t('nav.back')}
               className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 py-2.5 text-sm font-medium text-dark-text-tertiary transition-colors hover:border-white/15 hover:bg-white/[0.05] hover:text-dark-text"
             >
               <ArrowLeft className="h-4 w-4" />
               {t('nav.back')}
-            </Link>
+            </button>
           ) : (
             <div className="flex shrink-0 items-center gap-2">
               <Link
