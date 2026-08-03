@@ -2,6 +2,8 @@ import { useTranslation } from 'react-i18next';
 
 import { LanguageSelector } from '@/components/ui/language-selector';
 
+import { HistorySetting } from './components/HistorySetting';
+
 export function ConfigPage() {
   const { t } = useTranslation();
 
@@ -22,6 +24,10 @@ export function ConfigPage() {
           </p>
         </div>
         <LanguageSelector />
+      </section>
+
+      <section className="surface-panel p-5 sm:p-6">
+        <HistorySetting />
       </section>
     </div>
   );
