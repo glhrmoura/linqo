@@ -107,8 +107,66 @@
   }
 
   .surface-panel {
-    border-radius: 0;
+    border-radius: 1rem;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(30, 41, 59, 0.55);
+  }
+
+  .history-sheet-panel-in {
+    animation: history-sheet-slide-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .history-sheet-panel-out {
+    animation: history-sheet-slide-out 0.25s ease-in forwards;
+  }
+
+  @media (min-width: 768px) {
+    .history-sheet-panel-in {
+      animation: history-dialog-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .history-sheet-panel-out {
+      animation: history-dialog-out 0.2s ease-in forwards;
+    }
+  }
+}
+
+@keyframes history-sheet-slide-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes history-sheet-slide-out {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes history-dialog-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes history-dialog-out {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
   }
 }
