@@ -24,7 +24,7 @@ export const HistoryHeader = ({ count, onClear }: HistoryHeaderProps) => {
         onClick={onClear}
         disabled={count === 0}
         aria-label={t('history.clear')}
-        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-dark-text-tertiary transition-colors hover:border-white/20 hover:text-dark-text disabled:cursor-not-allowed disabled:opacity-40"
+        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-dark-text-tertiary transition-colors hover:border-white/15 hover:bg-white/[0.05] hover:text-dark-text disabled:cursor-not-allowed disabled:opacity-35"
       >
         <Trash2 className="h-4 w-4" />
       </button>

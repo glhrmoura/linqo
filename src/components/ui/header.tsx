@@ -12,15 +12,15 @@ export function Header({ className, ...props }: React.HTMLAttributes<HTMLElement
   return (
     <header
       className={cn(
-        'fixed left-0 right-0 top-0 z-50 border-b border-white/5 bg-dark-bg/70 pt-[env(safe-area-inset-top,0px)] backdrop-blur-xl',
+        'fixed left-0 right-0 top-0 z-50 border-b border-white/[0.06] bg-dark-bg/75 pt-[env(safe-area-inset-top,0px)] backdrop-blur-xl',
         className
       )}
       {...props}
     >
       <div className="container mx-auto max-w-2xl px-4 py-4">
         <div className="flex items-center justify-between gap-3">
-          <Link to="/" className="flex min-w-0 items-center gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5">
+          <Link to="/" className="group flex min-w-0 items-center gap-3">
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-linqo-green/15 text-linqo-green transition-colors group-hover:bg-linqo-green/20">
               <img
                 src="/assets/logo.png"
                 alt="Linqo"
@@ -28,7 +28,7 @@ export function Header({ className, ...props }: React.HTMLAttributes<HTMLElement
               />
             </span>
             <span className="min-w-0">
-              <span className="block truncate text-xl font-bold text-dark-text">
+              <span className="block truncate text-xl font-bold tracking-tight text-dark-text">
                 {t('title')}
               </span>
               <span className="block truncate text-xs text-dark-text-tertiary">
@@ -41,7 +41,7 @@ export function Header({ className, ...props }: React.HTMLAttributes<HTMLElement
             <Link
               to="/"
               aria-label={t('nav.backHome')}
-              className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2.5 text-sm font-medium text-dark-text-tertiary transition-colors hover:border-white/20 hover:text-dark-text"
+              className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 py-2.5 text-sm font-medium text-dark-text-tertiary transition-colors hover:border-white/15 hover:bg-white/[0.05] hover:text-dark-text"
             >
               <ArrowLeft className="h-4 w-4" />
               {t('nav.back')}
@@ -51,14 +51,14 @@ export function Header({ className, ...props }: React.HTMLAttributes<HTMLElement
               <Link
                 to="/history"
                 aria-label={t('nav.history')}
-                className="rounded-xl border border-white/10 bg-white/5 p-2.5 text-dark-text-tertiary transition-colors hover:border-white/20 hover:text-dark-text"
+                className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-2.5 text-dark-text-tertiary transition-colors hover:border-white/15 hover:bg-white/[0.05] hover:text-dark-text"
               >
                 <History className="h-5 w-5" />
               </Link>
               <Link
                 to="/config"
                 aria-label={t('nav.settings')}
-                className="rounded-xl border border-white/10 bg-white/5 p-2.5 text-dark-text-tertiary transition-colors hover:border-white/20 hover:text-dark-text"
+                className="rounded-xl border border-white/[0.08] bg-white/[0.03] p-2.5 text-dark-text-tertiary transition-colors hover:border-white/15 hover:bg-white/[0.05] hover:text-dark-text"
               >
                 <Settings className="h-5 w-5" />
               </Link>

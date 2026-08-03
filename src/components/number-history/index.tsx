@@ -40,14 +40,14 @@ export const NumberHistory = () => {
   };
 
   return (
-    <div className="min-h-screen bg-dark-bg text-dark-text">
+    <div className="page-shell">
       <Header />
-      <div className="container mx-auto flex max-w-2xl flex-col gap-6 px-4 pb-[calc(2rem+env(safe-area-inset-bottom,0px))] pt-[calc(5.5rem+env(safe-area-inset-top,0px))]">
+      <div className="container mx-auto flex max-w-2xl animate-fade-in flex-col gap-6 px-4 pb-[calc(2rem+env(safe-area-inset-bottom,0px))] pt-[calc(5.5rem+env(safe-area-inset-top,0px))]">
         <HistoryHeader count={items.length} onClear={handleClear} />
         {items.length === 0 ? (
           <HistoryEmpty />
         ) : (
-          <div className="overflow-hidden rounded-2xl border border-white/10 bg-dark-bg-secondary/80">
+          <div className="surface-panel overflow-hidden">
             {items.map((item) => (
               <HistoryItem
                 key={item.id}

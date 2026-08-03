@@ -3,7 +3,7 @@ import { ConfigPage as ConfigSettings } from '@/components/config';
 
 const Config = () => {
   return (
-    <div className="min-h-screen bg-dark-bg text-dark-text">
+    <div className="page-shell">
       <Header />
       <ConfigSettings />
     </div>

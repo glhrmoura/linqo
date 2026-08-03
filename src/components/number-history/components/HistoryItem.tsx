@@ -37,27 +37,27 @@ export const HistoryItem = ({ item, onOpen, onRemove }: HistoryItemProps) => {
   const Icon = platformIcons[item.platform];
 
   return (
-    <div className="group relative flex items-center border-b border-white/5 transition-colors last:border-b-0 hover:bg-white/[0.04]">
+    <div className="group relative flex items-center border-b border-white/[0.05] transition-colors duration-200 last:border-b-0 hover:bg-white/[0.035]">
       <button
         type="button"
         onClick={() => onOpen(item)}
-        className="flex min-w-0 flex-1 items-center gap-3 px-4 py-3.5 text-left"
+        className="flex min-w-0 flex-1 items-center gap-3.5 px-4 py-4 text-left"
       >
         <span
           className={cn(
-            'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl',
+            'flex h-11 w-11 shrink-0 items-center justify-center rounded-xl',
             platformStyles[item.platform]
           )}
         >
-          <Icon className="h-4 w-4" />
+          <Icon className="h-[18px] w-[18px]" />
         </span>
         <span className="min-w-0 flex-1">
-          <span className="block truncate font-medium tabular-nums text-dark-text">
+          <span className="block truncate text-[15px] font-medium tracking-tight tabular-nums text-dark-text">
             {item.countryCode} {item.phoneNumber}
           </span>
-          <span className="mt-0.5 flex items-center gap-2 text-xs text-dark-text-tertiary">
+          <span className="mt-1 flex items-center gap-2 text-xs text-dark-text-tertiary">
             <span>{t(`form.platform.${item.platform}`)}</span>
-            <span className="text-white/20">·</span>
+            <span className="text-white/15">·</span>
             <span>{formatUsedAt(item.usedAt, i18n.language)}</span>
           </span>
         </span>
@@ -66,7 +66,7 @@ export const HistoryItem = ({ item, onOpen, onRemove }: HistoryItemProps) => {
         type="button"
         onClick={() => onRemove(item.id)}
         aria-label={t('history.remove')}
-        className="mr-2 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-dark-text-tertiary opacity-60 transition-opacity hover:opacity-100 hover:text-dark-text"
+        className="mr-3 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-dark-text-tertiary opacity-50 transition-all duration-200 hover:opacity-100 hover:text-dark-text"
       >
         <X className="h-4 w-4" />
       </button>

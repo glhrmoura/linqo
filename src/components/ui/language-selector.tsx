@@ -21,7 +21,7 @@ export function LanguageSelector({ className }: LanguageSelectorProps) {
       <SelectTrigger
         aria-label={t('config.language')}
         className={cn(
-          'h-12 w-full rounded-xl border-white/10 bg-dark-bg/50 px-5 text-dark-text focus:border-white/10 focus:ring-0 focus:ring-offset-0',
+          'h-12 w-full rounded-xl border-white/[0.08] bg-dark-bg/40 px-5 text-dark-text focus:border-white/15 focus:ring-0 focus:ring-offset-0',
           className
         )}
       >
