@@ -69,6 +69,10 @@
       "title": "History is off",
       "description": "Turn on history in settings to save and reuse numbers on this device.",
       "openSettings": "Open settings"
+    },
+    "openSheet": {
+      "title": "Open chat",
+      "cancel": "Cancel"
     }
   },
   "toast": {
