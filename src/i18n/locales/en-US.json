@@ -9,12 +9,14 @@
   },
   "config": {
     "title": "Settings",
-    "description": "Customize Linqo.",
+    "description": "Adjust language and app preferences on this device.",
     "language": "Language",
     "languageDescription": "Choose the app language.",
     "langPt": "Português (Brasil)",
     "langEn": "English",
-    "langEs": "Español"
+    "langEs": "Español",
+    "history": "History",
+    "historyDescription": "When enabled, numbers you open are saved on this device so you can reuse them later."
   },
   "card": {
     "title": "Open a chat",
@@ -63,6 +65,11 @@
     "empty": {
       "title": "No numbers yet",
       "description": "Numbers you open will appear here for quick access."
+    },
+    "disabled": {
+      "title": "History is off",
+      "description": "Turn on history in settings to save and reuse numbers on this device.",
+      "openSettings": "Open settings"
     }
   },
   "footer": {
