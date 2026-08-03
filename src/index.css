@@ -58,9 +58,20 @@
     overscroll-behavior: none;
   }
 
+  button,
+  input,
+  textarea {
+    @apply font-lexend;
+  }
+
   button {
     -webkit-appearance: none;
     appearance: none;
+  }
+
+  button[role='combobox'] > svg:last-of-type {
+    color: #ffffff !important;
+    stroke: #ffffff !important;
   }
 
   #root {

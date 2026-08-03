@@ -161,13 +161,13 @@ const Index = () => {
             <div className="grid gap-3 md:grid-cols-[minmax(13rem,0.85fr)_minmax(0,1.35fr)] md:items-stretch">
               <div className="min-w-0">
                 <Select value={countryCode} onValueChange={setCountryCode}>
-                  <SelectTrigger className="h-[4.5rem] items-center rounded-2xl border-white/[0.08] bg-dark-bg/50 px-4 py-0 text-dark-text shadow-none transition-colors focus:border-white/15 focus:ring-0 focus:ring-offset-0 [&>svg]:text-white">
+                  <SelectTrigger className="h-[4.5rem] items-center rounded-2xl border-white/[0.08] bg-dark-bg/50 px-4 py-0 text-dark-text shadow-none transition-colors focus:border-white/15 focus:ring-0 focus:ring-offset-0 accent-transparent [-webkit-tap-highlight-color:transparent] [&>svg]:!text-white [&>svg]:![stroke:#ffffff]">
                     <div className="flex min-w-0 flex-1 flex-col items-start gap-1 text-left">
                       <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-dark-text-tertiary">
                         {t('form.countryCode.label')}
                       </span>
                       <div className="flex min-w-0 items-center gap-2.5">
-                        <Globe className="h-4 w-4 shrink-0 text-dark-text-tertiary" />
+                        <Globe className="h-4 w-4 shrink-0 text-dark-text-tertiary" color="#94a3b8" stroke="#94a3b8" />
                         <SelectValue className="text-base font-semibold" />
                       </div>
                     </div>
@@ -201,7 +201,7 @@ const Index = () => {
                       {t('form.phoneNumber.label')}
                     </label>
                     <div className="relative mt-1">
-                      <Phone className="pointer-events-none absolute left-0 top-1/2 h-4 w-4 -translate-y-1/2 text-dark-text-tertiary" />
+                      <Phone className="pointer-events-none absolute left-0 top-1/2 h-4 w-4 -translate-y-1/2 text-dark-text-tertiary" color="#94a3b8" stroke="#94a3b8" />
                       <Input
                         id="phone-number"
                         type="tel"
@@ -232,7 +232,7 @@ const Index = () => {
                     type="button"
                     onClick={handlePastePhone}
                     variant="ghost"
-                    className="h-auto min-h-0 shrink-0 flex-col gap-1 self-stretch rounded-none border-l border-white/[0.08] px-3 text-xs text-dark-text-tertiary hover:bg-white/[0.04] hover:text-dark-text"
+                    className="h-auto min-h-0 shrink-0 flex-col gap-1 self-stretch rounded-none border-0 border-l border-solid border-l-white/[0.08] bg-transparent px-3 text-xs text-dark-text-tertiary hover:bg-white/[0.04] hover:text-dark-text"
                   >
                     <ClipboardPaste className="h-5 w-5" />
                     {t('form.paste')}
