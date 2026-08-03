@@ -18,9 +18,9 @@ const toastIcons = {
 } as const
 
 const toastIconStyles = {
-  default: 'bg-white/15 text-white',
-  success: 'bg-white/20 text-white',
-  destructive: 'bg-white/20 text-white',
+  default: 'bg-white/10 text-dark-text-secondary',
+  success: 'bg-linqo-green/15 text-linqo-green',
+  destructive: 'bg-red-500/15 text-red-400',
 } as const
 
 export function Toaster() {
@@ -36,11 +36,11 @@ export function Toaster() {
           <Toast key={id} variant={resolvedVariant} {...props}>
             <span
               className={cn(
-                'mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg',
+                'mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl',
                 toastIconStyles[resolvedVariant] ?? toastIconStyles.default
               )}
             >
-              <Icon className="h-4 w-4" strokeWidth={2.5} />
+              <Icon className="h-4 w-4" strokeWidth={2.25} />
             </span>
             <div className="grid flex-1 gap-1">
               {title && <ToastTitle>{title}</ToastTitle>}
