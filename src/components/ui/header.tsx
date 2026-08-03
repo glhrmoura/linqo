@@ -32,7 +32,7 @@ export function Header({ className, ...props }: React.HTMLAttributes<HTMLElement
       )}
       {...props}
     >
-      <div className="container mx-auto max-w-2xl px-4 py-4">
+      <div className="container mx-auto max-w-2xl px-4 py-4 md:px-3">
         <div className="flex items-center justify-between gap-3">
           <Link to="/" className="group flex min-w-0 items-center gap-3">
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-linqo-green/15 text-linqo-green transition-colors group-hover:bg-linqo-green/20">

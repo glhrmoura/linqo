@@ -136,7 +136,7 @@ const Index = () => {
     <div className="page-shell">
       <Header />
 
-      <div className="container mx-auto flex max-w-2xl flex-col gap-6 px-2 pb-[calc(2rem+env(safe-area-inset-bottom,0px))] pt-[calc(5.5rem+env(safe-area-inset-top,0px))] sm:px-4">
+      <div className="container mx-auto flex max-w-2xl flex-col gap-6 px-4 pb-[calc(2rem+env(safe-area-inset-bottom,0px))] pt-[calc(5.5rem+env(safe-area-inset-top,0px))] md:px-3">
         <header>
           <h2 className="text-xl font-semibold tracking-tight text-dark-text">
             {t('card.title')}
@@ -146,9 +146,9 @@ const Index = () => {
           </p>
         </header>
 
-        <section className="surface-panel p-2 sm:p-5 md:p-6">
+        <section className="surface-panel p-4 md:p-3">
           <div className="space-y-4">
-            <div className="rounded-2xl border border-white/[0.08] bg-dark-bg/50 p-2 sm:p-4">
+            <div className="rounded-2xl border border-white/[0.08] bg-dark-bg/50 p-4 md:p-3">
               <span className="mb-2 block text-[10px] font-medium uppercase tracking-wide text-dark-text-tertiary">
                 {t('form.platform.label')}
               </span>
@@ -175,7 +175,7 @@ const Index = () => {
             <div className="grid gap-4 md:grid-cols-[minmax(13rem,0.85fr)_minmax(0,1.35fr)] md:items-stretch">
               <div className="min-w-0">
                 <Select value={countryCode} onValueChange={setCountryCode}>
-                  <SelectTrigger className="h-[4.5rem] items-center rounded-2xl border-white/[0.08] bg-dark-bg/50 px-2 py-0 text-dark-text shadow-none transition-colors focus:border-white/15 focus:ring-0 focus:ring-offset-0 accent-transparent [-webkit-tap-highlight-color:transparent] sm:px-4 [&>svg]:!text-white [&>svg]:![stroke:#ffffff]">
+                  <SelectTrigger className="h-auto min-h-0 items-center rounded-2xl border-white/[0.08] bg-dark-bg/50 px-4 py-4 text-dark-text shadow-none transition-colors focus:border-white/15 focus:ring-0 focus:ring-offset-0 accent-transparent [-webkit-tap-highlight-color:transparent] md:px-3 md:py-3 [&>svg]:!text-white [&>svg]:![stroke:#ffffff]">
                     <div className="flex min-w-0 flex-1 flex-col items-start gap-1 text-left">
                       <span className="text-[10px] font-medium uppercase tracking-wide text-dark-text-tertiary">
                         {t('form.countryCode.label')}
@@ -211,9 +211,9 @@ const Index = () => {
                 </Select>
               </div>
 
-              <div className="relative mb-2 min-w-0 pb-6">
-                <div className="flex h-[4.5rem] items-stretch overflow-hidden rounded-2xl border border-white/[0.08] bg-dark-bg/50 transition-colors focus-within:border-white/15">
-                  <div className="relative min-w-0 flex-1 self-center px-2 sm:px-4">
+              <div className="relative mb-8 min-w-0">
+                <div className="flex items-stretch overflow-hidden rounded-2xl border border-white/[0.08] bg-dark-bg/50 transition-colors focus-within:border-white/15">
+                  <div className="relative min-w-0 flex-1 self-center px-4 py-4 md:px-3 md:py-3">
                     <label
                       htmlFor="phone-number"
                       className="block text-[10px] font-medium uppercase tracking-wide text-dark-text-tertiary"
@@ -256,7 +256,7 @@ const Index = () => {
                     type="button"
                     onClick={phoneNumber ? handleClearPhone : handlePastePhone}
                     variant="ghost"
-                    className="h-auto min-h-0 shrink-0 flex-col gap-1 self-stretch rounded-none border-0 border-l border-solid border-l-white/[0.08] bg-transparent px-2 text-xs text-dark-text-tertiary hover:bg-white/[0.04] hover:text-dark-text sm:px-4"
+                    className="h-auto min-h-0 shrink-0 flex-col gap-1 self-stretch rounded-none border-0 border-l border-solid border-l-white/[0.08] bg-transparent px-4 text-xs text-dark-text-tertiary hover:bg-white/[0.04] hover:text-dark-text md:px-3"
                   >
                     {phoneNumber ? (
                       <Eraser className="h-5 w-5" />
@@ -284,8 +284,7 @@ const Index = () => {
                   </Button>
                 </div>
                 {phoneNumber && !isValidNumber && (
-                  <p className="pointer-events-none absolute left-0 top-[4.5rem] mt-2 flex items-center gap-1.5 px-2 text-sm text-red-400 sm:px-4">
-                    <CircleAlert className="h-3.5 w-3.5 shrink-0" />
+                  <p className="pointer-events-none absolute right-0 top-full mt-2 text-right text-xs text-red-400">
                     {t('form.phoneNumber.error')}
                   </p>
                 )}
