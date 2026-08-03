@@ -107,7 +107,7 @@
   }
 
   .surface-panel {
-    border-radius: 1rem;
+    border-radius: 0;
     border: 1px solid rgba(255, 255, 255, 0.08);
     background: rgba(30, 41, 59, 0.55);
   }
