@@ -49,6 +49,16 @@
     "clear": "Clear history",
     "back": "Back",
     "remove": "Remove number",
+    "clearConfirm": {
+      "title": "Clear history?",
+      "description": "All saved numbers will be removed from this device. This action cannot be undone.",
+      "cancel": "Cancel",
+      "confirm": "Clear"
+    },
+    "date": {
+      "today": "Today",
+      "yesterday": "Yesterday"
+    },
     "empty": {
       "title": "No numbers yet",
       "description": "Numbers you open will appear here for quick access."

@@ -49,6 +49,16 @@
     "clear": "Limpar histórico",
     "back": "Voltar",
     "remove": "Remover número",
+    "clearConfirm": {
+      "title": "Limpar histórico?",
+      "description": "Todos os números salvos serão removidos deste dispositivo. Essa ação não pode ser desfeita.",
+      "cancel": "Cancelar",
+      "confirm": "Limpar"
+    },
+    "date": {
+      "today": "Hoje",
+      "yesterday": "Ontem"
+    },
     "empty": {
       "title": "Nenhum número ainda",
       "description": "Os números que você abrir aparecerão aqui para uso rápido."

@@ -49,6 +49,16 @@
     "clear": "Borrar historial",
     "back": "Volver",
     "remove": "Eliminar número",
+    "clearConfirm": {
+      "title": "¿Borrar historial?",
+      "description": "Todos los números guardados se eliminarán de este dispositivo. Esta acción no se puede deshacer.",
+      "cancel": "Cancelar",
+      "confirm": "Borrar"
+    },
+    "date": {
+      "today": "Hoy",
+      "yesterday": "Ayer"
+    },
     "empty": {
       "title": "Aún no hay números",
       "description": "Los números que abras aparecerán aquí para acceso rápido."
