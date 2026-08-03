@@ -145,7 +145,7 @@ const Index = () => {
                     type="button"
                     onClick={() => setPlatform(id)}
                     className={cn(
-                      'flex h-[4.25rem] flex-col items-center justify-center gap-1.5 rounded-xl px-2 text-[11px] font-medium transition-all duration-200 sm:h-12 sm:flex-row sm:gap-2 sm:px-3 sm:text-sm',
+                      'flex h-[4.25rem] flex-col items-center justify-center gap-1.5 rounded-xl border border-transparent px-2 text-[11px] font-medium outline-none transition-colors duration-200 [-webkit-tap-highlight-color:transparent] focus:outline-none focus-visible:outline-none sm:h-12 sm:flex-row sm:gap-2 sm:px-3 sm:text-sm',
                       platform === id
                         ? activeClass
                         : 'text-dark-text-tertiary hover:bg-white/[0.04] hover:text-dark-text'
@@ -161,7 +161,7 @@ const Index = () => {
             <div className="grid gap-3 md:grid-cols-[minmax(13rem,0.85fr)_minmax(0,1.35fr)] md:items-stretch">
               <div className="min-w-0">
                 <Select value={countryCode} onValueChange={setCountryCode}>
-                  <SelectTrigger className="h-[4.5rem] items-center rounded-2xl border-white/[0.08] bg-dark-bg/50 px-4 py-0 text-dark-text shadow-none transition-colors focus:border-white/15 focus:ring-0 focus:ring-offset-0">
+                  <SelectTrigger className="h-[4.5rem] items-center rounded-2xl border-white/[0.08] bg-dark-bg/50 px-4 py-0 text-dark-text shadow-none transition-colors focus:border-white/15 focus:ring-0 focus:ring-offset-0 [&>svg]:text-white">
                     <div className="flex min-w-0 flex-1 flex-col items-start gap-1 text-left">
                       <span className="text-[10px] font-medium uppercase tracking-[0.14em] text-dark-text-tertiary">
                         {t('form.countryCode.label')}
